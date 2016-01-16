@@ -9,7 +9,7 @@ var SvgStore               = require('webpack-svgstore-plugin');
 var path                   = require('path');
 
 var paths = {
-	src: './src',
+	src: path.join(__dirname, '/src'),
 	dist: './dist',
 	distAbsolute: __dirname + '/dist'
 };
@@ -35,6 +35,10 @@ var config = {
 			{
 				test: /\.css$/,
 				loader: 'style!css!postcss'
+			},
+			{
+				test: /\.scss$/,
+				loader: 'style!css!sass'
 			}
 		]
 	},

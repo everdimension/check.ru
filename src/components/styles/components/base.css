@@ -1,0 +1,34 @@
+*, *:after, *:before {
+	box-sizing: border-box;
+}
+
+html {
+	min-height: 100%;
+}
+body {
+	background-color: $app-bg;
+	background-image: linear-gradient(to right bottom, #647E88, #2A3B48);
+	background-repeat: no-repeat;
+}
+
+img {
+	max-width: 100%;
+}
+
+.svg-icon {
+	width: 1em;
+	height: 1em;
+	line-height: inherit;
+	vertical-align: middle;
+	fill: currentColor;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-muted {
+	color: $text-muted;
+}

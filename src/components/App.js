@@ -1,15 +1,20 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react';
 import './App.css';
 
 class App extends React.Component {
 	render () {
 		return (
-			<div className="App">
-				<header className="App__header PageHeader">
+			<div className="App content-wrapper">
+				<header className="App__header">
 					<div className="container">
-						<span className="PageHeader__logo">
-							App
-						</span>
+						<div className="row">
+							<div className="small-4 columns">left column</div>
+							<div className="small-4 columns">
+								<span className="PageHeader__logo">
+									App
+								</span>
+							</div>
+						</div>
 
 					</div>
 				</header>
