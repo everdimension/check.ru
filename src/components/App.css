@@ -1,0 +1,52 @@
+@import './variables.css';
+
+body {
+	background-color: $app-bg;
+}
+
+*, *:after, *:before {
+	box-sizing: border-box;
+}
+
+img {
+	max-width: 100%;
+}
+
+.svg-icon {
+	width: 1em;
+	height: 1em;
+	line-height: inherit;
+	vertical-align: middle;
+	fill: currentColor;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-muted {
+	color: $text-muted;
+}
+
+.App {
+
+}
+
+.container {
+	max-width: 800px;
+	margin: 0 auto;
+	padding-left: 15px;
+	padding-right: 15px;
+	&--full {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+.PageHeader {
+	background-color: #fff;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}

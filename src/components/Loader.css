@@ -1,0 +1,46 @@
+$b: 1px;
+
+.Loader {
+	position: relative;
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	border: $b solid;
+	border-color: inherit;
+	border-top-color: transparent;
+	border-radius: 50%;
+	animation: .5s spin linear infinite;
+	&:after {
+		content: ' ';
+		position: absolute;
+		top: calc(0 - $b);
+		left: calc(0 - $b);
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+		border: $b solid;
+		border-color: inherit;
+		border-top-color: transparent;
+		border-right-color: transparent;
+		border-bottom-color: transparent;
+		border-radius: 50%;
+		transform: rotate(55deg);
+	}
+	&--large {
+		width: 3em;
+		height: 3em;
+		&:after {
+			width: 3em;
+			height: 3em;
+		}
+	}
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
