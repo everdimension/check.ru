@@ -1,13 +1,12 @@
 @import './styles/variables.css';
-@import './styles/components/base.css';
-@import './styles/components/scaffolding.css';
+@import './styles/main.css';
+
 
 .App {
 
 }
 
 .PageHeader {
-	background-color: #fff;
 	padding-top: 15px;
 	padding-bottom: 15px;
 }

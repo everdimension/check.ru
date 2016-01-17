@@ -8,9 +8,19 @@ require('./components/styles/foundation.scss');
 function render() {
 	ReactDOM.render(
 		<App>
-			<div className="container">
-				<p>page content</p>
+			<div className="row">
+				<div className="small-12 column">
+					<p>page content inside a <code>.row</code></p>
+				</div>
 			</div>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, distinctio!</p>
+
+			<div className="panel">
+				<div className="panel__body">
+					mega panel
+				</div>
+			</div>
+
 		</App>,
 		document.getElementById('app')
 	);

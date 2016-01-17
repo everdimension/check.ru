@@ -1,0 +1,6 @@
+@import './variables.css';
+
+/*components*/
+@import './styles/components/base.css';
+@import './styles/components/panels.css';
+@import './styles/components/scaffolding.css';

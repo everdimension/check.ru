@@ -6,8 +6,8 @@ html {
 	min-height: 100%;
 }
 body {
-	background-color: $app-bg;
-	background-image: linear-gradient(to right bottom, #647E88, #2A3B48);
+	background-color: #647E88;
+	background-image: linear-gradient(to right bottom, #647E88, #3C5263);
 	background-repeat: no-repeat;
 }
 

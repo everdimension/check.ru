@@ -1,0 +1,7 @@
+.panel {
+	background-color: #fff;
+	border: $app-border-clr-light;
+	&__body {
+		padding: 20px;
+	}
+}

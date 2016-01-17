@@ -3,7 +3,7 @@
 	max-width: 800px;
 	margin: 110px auto 0;
 	padding: 20px;
-	background-color: #fff;
+	background-color: $main-bg;
 }
 
 .container {
