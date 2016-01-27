@@ -1,5 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import  { Router, Route, IndexRoute } from 'react-router';
+import { Provider } from 'react-redux';
+import store from './store';
+import HomePage from './pages/HomePage';
 import App from './components/App';
 
 import 'normalize.css/normalize.css';
@@ -7,21 +11,11 @@ require('./components/styles/foundation.scss');
 
 function render() {
 	ReactDOM.render(
-		<App>
-			<div className="row">
-				<div className="small-12 column">
-					<p>page content inside a <code>.row</code></p>
-				</div>
-			</div>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, distinctio!</p>
-
-			<div className="panel">
-				<div className="panel__body">
-					mega panel
-				</div>
-			</div>
-
-		</App>,
+		<Provider store={store}>
+			<App>
+				<HomePage />
+			</App>
+		</Provider>,
 		document.getElementById('app')
 	);
 }

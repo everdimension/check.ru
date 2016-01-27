@@ -1,6 +1,13 @@
 @import './variables.css';
 
+
+
+/*layout*/
+@import './styles/layout/base.css';
+@import './styles/layout/panels.css';
+@import './styles/layout/scaffolding.css';
+@import './styles/layout/type.css';
+@import './styles/layout/utilities.css';
+
 /*components*/
-@import './styles/components/base.css';
-@import './styles/components/panels.css';
-@import './styles/components/scaffolding.css';
+@import './components/SummaryTable.css';

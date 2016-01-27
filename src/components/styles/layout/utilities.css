@@ -1,0 +1,15 @@
+.text-right {
+	text-align: right;
+}
+
+.text-light {
+	color: $text-light;
+}
+
+.text-thin {
+	font-weight: lighter;
+}
+
+.text-huge {
+	font-size: 2em;
+}

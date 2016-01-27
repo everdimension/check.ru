@@ -1,9 +1,12 @@
 .content-wrapper {
 	width: 100%;
-	max-width: 800px;
+
 	margin: 110px auto 0;
 	padding: 20px;
 	background-color: $main-bg;
+	&, &.App {
+		max-width: 800px;
+	}
 }
 
 .container {

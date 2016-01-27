@@ -1,0 +1,15 @@
+body {
+	font-family: 'Open Sans';
+	font-size: 14px;
+}
+
+.Huge {
+	font-size: 32px;
+	line-height: 1;
+	&--even-line {
+		line-height: 0;
+	}
+	&__evens-with {
+		line-height: 45px;
+	}
+}

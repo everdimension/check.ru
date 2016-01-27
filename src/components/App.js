@@ -4,7 +4,7 @@ import './App.css';
 class App extends React.Component {
 	render () {
 		return (
-			<div className="App content-wrapper">
+			<div className="App content-wrapper row">
 				<header className="App__header">
 					<div className="row">
 						<div className="small-4 columns">left column</div>
@@ -17,12 +17,7 @@ class App extends React.Component {
 				</header>
 
 				<div className="App__body">
-					<div className="row">
-						<div className="small-12 column">
-							{this.props.children}
-							
-						</div>
-					</div>
+					{this.props.children}
 
 				</div>
 			</div>

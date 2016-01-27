@@ -16,7 +16,7 @@ var paths = {
 
 var config = {
 	entry: [
-		'webpack-dev-server/client?http://localhost:8080',
+		'webpack-dev-server/client?http://0.0.0.0:8080',
 		'webpack/hot/only-dev-server',
 		paths.src + '/index.js'
 	],
@@ -43,22 +43,13 @@ var config = {
 		]
 	},
 
-	postcss: function () {
-		return [postcssInlineComment, autoprefixer, postcssImport, postcssVars, postcssNested, postcssCalc];
-	},
-
-	devServer: {
-		contentBase: paths.dist,
-		host: '0.0.0.0',
-		hot: true,
-		historyApiFallback: true,
-		proxy: {
-			'/api/*': {
-				target: 'https://instaflower.herokuapp.com',
-				secure: false,
-				changeOrigin: true
-			}
-		}
+	postcss: function (webpack) {
+		return [
+			postcssImport({
+				addDependencyTo: webpack
+			}),
+			postcssInlineComment, autoprefixer, postcssVars, postcssNested, postcssCalc
+		];
 	},
 
 	plugins: [
@@ -67,10 +58,25 @@ var config = {
 			'whatwgfetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
 		}),
 		new SvgStore(path.join(paths.src, 'svg', '**/*.svg'), 'svg', {
-			name: '[hash].spritve.svg',
+			name: '[hash].sprite.svg',
 			chunk: 'app'
 		})
-	]
+	],
+
+	devServer: {
+		hostname: '0.0.0.0',
+		contentBase: paths.dist,
+		publicPath: '/',
+		hot: true,
+		proxy: {
+			'/api/*': {
+				target: 'http://127.0.0.1:4300'
+				// secure: false,
+				// changeOrigin: true
+			}
+		},
+		historyApiFallback: true
+	}
 };
 
 module.exports = config;

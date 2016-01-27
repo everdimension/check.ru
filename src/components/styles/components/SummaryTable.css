@@ -1,0 +1,16 @@
+.SummaryTable {
+	padding-top: 40px;
+	&__row {
+		margin-bottom: 15px;
+	}
+
+	&__value {
+		&--huge {
+			font-size: 32px;
+			@media (min-width: $breakpoint-medium) {
+				line-height: 0;
+			}
+		}
+	}
+
+}

@@ -37,6 +37,8 @@
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "react-magic-move": "^0.1.0",
+    "react-redux": "^4.0.6",
+    "react-router": "^2.0.0-rc5",
     "redux": "^3.0.5",
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",

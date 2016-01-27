@@ -3,3 +3,11 @@ $main-bg: #f5f5f5;
 $app-border-clr-light: #ddd;
 
 $text-muted: #666;
+$text-light: #999;
+
+/*foundation breakpoints*/
+$breakpoint-small: 0;
+$breakpoint-medium: 640px;
+$breakpoint-large: 1024px;
+$breakpoint-xlarge: 1200px;
+$breakpoint-xxlarge: 1440px;
