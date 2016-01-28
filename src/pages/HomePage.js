@@ -1,6 +1,6 @@
 import React from 'react';
 import Loader from '../components/Loader';
-import IpInfo from '../components/IpInfo';
+import ClientInfoContainer from '../containers/ClientInfoContainer';
 
 class HomePage extends React.Component {
 
@@ -9,7 +9,7 @@ class HomePage extends React.Component {
 			<div id="home">
 				<div className="row">
 					<div className="small-12 columns">
-						<IpInfo />
+						<ClientInfoContainer />
 
 						<br/>
 

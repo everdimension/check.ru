@@ -1,10 +1,12 @@
 import React, { PropTypes } from 'react'
+import Loader from './Loader';
 
 class IpInfo extends React.Component {
 	render () {
 		return (
 			<div className="panel">
 				<div className="panel__body SummaryTable">
+					{this.props.loading ? <Loader /> : null}
 					<div className="row SummaryTable__row">
 						<div className="medium-3 columns SummaryTable__label text-light text-thin">
 							<span>
