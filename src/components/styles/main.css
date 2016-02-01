@@ -1,9 +1,8 @@
 @import './variables.css';
 
-
-
 /*layout*/
 @import './styles/layout/base.css';
+@import './styles/layout/forms.css';
 @import './styles/layout/panels.css';
 @import './styles/layout/scaffolding.css';
 @import './styles/layout/type.css';

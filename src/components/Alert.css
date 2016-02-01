@@ -1,0 +1,10 @@
+@import './styles/variables';
+
+.Alert {
+	&--error {
+		padding: 20px;
+		color: white;
+		background-color: $app-clr-error;
+		font-weight: lighter;
+	}
+}

@@ -24,11 +24,3 @@ img {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-
-.text-center {
-	text-align: center;
-}
-
-.text-muted {
-	color: $text-muted;
-}

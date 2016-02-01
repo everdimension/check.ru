@@ -23,7 +23,6 @@ class ClientInfoContainer extends React.Component {
 	}
 
 	render() {
-		console.log('re');
 		return (
 			<IpInfo
 				data={this.state.ipInfo.get('data')}

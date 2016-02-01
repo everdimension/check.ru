@@ -7,6 +7,7 @@ var postcssCalc            = require('postcss-calc');
 var postcssInlineComment   = require('postcss-inline-comment');
 var SvgStore               = require('webpack-svgstore-plugin');
 var path                   = require('path');
+var PORT = 8070;
 
 var paths = {
 	src: path.join(__dirname, '/src'),
@@ -16,7 +17,7 @@ var paths = {
 
 var config = {
 	entry: [
-		'webpack-dev-server/client?http://0.0.0.0:8080',
+		'webpack-dev-server/client?http://0.0.0.0:' + PORT,
 		'webpack/hot/only-dev-server',
 		paths.src + '/index.js'
 	],
@@ -65,6 +66,7 @@ var config = {
 
 	devServer: {
 		hostname: '0.0.0.0',
+		port: PORT,
 		contentBase: paths.dist,
 		publicPath: '/',
 		hot: true,

@@ -13,3 +13,11 @@
 .text-huge {
 	font-size: 2em;
 }
+
+.text-center {
+	text-align: center;
+}
+
+.text-muted {
+	color: $text-muted;
+}

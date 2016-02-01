@@ -1,5 +1,6 @@
 import React from 'react';
 import Loader from '../components/Loader';
+import DomainsContainer from '../containers/DomainsContainer';
 import ClientInfoContainer from '../containers/ClientInfoContainer';
 
 class HomePage extends React.Component {
@@ -13,11 +14,7 @@ class HomePage extends React.Component {
 
 						<br/>
 
-						<form>
-							<input type="text" placeholder="Введите название домена" />
-						</form>
-
-
+						<DomainsContainer />
 					</div>
 
 				</div>

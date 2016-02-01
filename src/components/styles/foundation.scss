@@ -6,3 +6,11 @@
 @include foundation-grid;
 @include foundation-forms;
 // @include foundation-global-styles;
+
+
+#{text-inputs()} {
+	box-shadow: none;
+	font-weight: lighter;
+	border-color: #ddd;
+	background-color: white;
+}

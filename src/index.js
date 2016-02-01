@@ -1,3 +1,6 @@
+import 'normalize.css/normalize.css';
+require('./components/styles/foundation.scss');
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import  { Router, Route, IndexRoute } from 'react-router';
@@ -5,9 +8,12 @@ import { Provider } from 'react-redux';
 import store from './store';
 import HomePage from './pages/HomePage';
 import App from './components/App';
+import { addDomain } from './redux/modules/domains';
+const tlds = ['com', 'ru', 'org', 'net'];
 
-import 'normalize.css/normalize.css';
-require('./components/styles/foundation.scss');
+for (let tld of tlds) {
+	store.dispatch(addDomain({ tld }));
+}
 
 function render() {
 	ReactDOM.render(
