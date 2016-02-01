@@ -12,7 +12,7 @@ class IpInfo extends React.Component {
 		return (
 			<div className="panel">
 				<div className="panel__body SummaryTable">
-					{this.props.loading ? <div className="text-center"><Loader /></div> : null}
+					{this.props.loading ? <div className="text-center"><Loader size="large" /></div> : null}
 
 					{this.props.data ?
 					<div className="SummaryTable">

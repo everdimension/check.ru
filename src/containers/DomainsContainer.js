@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { addDomain, fetchDomain } from '../redux/modules/domains';
 import DomainSearch from '../components/DomainSearch';
+import tlds from '../tlds';
 
 class DomainsContainer extends React.Component {
 	constructor(props, context) {
@@ -16,9 +17,13 @@ class DomainsContainer extends React.Component {
 
 	queryDomains(domainName) {
 		console.log('must query domains', domainName);
-		this.store.dispatch(
-			fetchDomain(domainName)
-		);
+
+		tlds.forEach(tld => this.store.dispatch(
+			fetchDomain(`${domainName}.${tld}`)
+		));
+		// this.store.dispatch(
+		// 	fetchDomain(domainName)
+		// );
 
 	}
 

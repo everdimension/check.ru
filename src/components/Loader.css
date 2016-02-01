@@ -9,6 +9,7 @@ $b: 1px;
 	border-color: inherit;
 	border-top-color: transparent;
 	border-radius: 50%;
+	vertical-align: middle;
 	animation: .5s spin linear infinite;
 	&:after {
 		content: ' ';

@@ -43,10 +43,10 @@ class DomainSearch extends React.Component {
 					}
 					<div className="panel">
 						<div className="panel__body">
-							{domains.isFetching ?
-							<Loader /> : null
+							{/*domains.isFetching ?
+							<Loader /> : null*/
 							}
-							{!domains.isFetching && domains.data.length ?
+							{domains.data.length ?
 							<DomainsList domains={domains.data} />
 							: null}
 						</div>

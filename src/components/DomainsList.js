@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import Loader from './Loader';
 
 class DomainsList extends React.Component {
 	static get propTypes() {
@@ -11,7 +12,11 @@ class DomainsList extends React.Component {
 		return (
 			<div className="row">
 				{domains.map(domain => (
-					<div className="small-12 columns">{domain.tld}</div>
+					<div className="small-12 columns">
+						{domain.isFetching ? <Loader /> : ''}
+						{' '}
+						{domain.tld}
+					</div>
 				))}
 			</div>
 		)
