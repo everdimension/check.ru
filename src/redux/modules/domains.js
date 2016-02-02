@@ -53,7 +53,8 @@ function domainReducer(state = initialDomainState, action) {
 	switch (action.type) {
 		case REQUEST_DOMAIN:
 			return Object.assign({}, state, {
-				isFetching: true
+				isFetching: true,
+				data: action.data
 			});
 		case RECEIVE_DOMAIN:
 			const newState = Object.assign({}, state, {
@@ -83,10 +84,14 @@ export function addDomain(domain) {
 }
 
 export const REQUEST_DOMAIN = 'REQUEST_DOMAIN';
-export function requestDomain(tld) {
+export function requestDomain(tld, query) {
 	return {
 		type: REQUEST_DOMAIN,
-		tld
+		tld,
+		data: {
+			full_name: `${query}.${tld}`
+		}
+
 	};
 }
 
@@ -100,12 +105,11 @@ export function receiveDomain(tld, data, error) {
 	};
 }
 
-export function fetchDomain(query) {
-	const tld = query.split('.')[1];
+export function fetchDomain(tld, query) {
 	return dispatch => {
-		dispatch(requestDomain(tld));
+		dispatch(requestDomain(tld, query));
 
-		return Domains.query(query)
+		return Domains.query(tld, query)
 			.then( res => dispatch(receiveDomain(tld, res)) )
 			.catch(err => {
 				// dispatch(receiveDomain(tld, err, true))

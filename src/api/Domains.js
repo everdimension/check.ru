@@ -1,9 +1,9 @@
 import jsonResponseHandler from './jsonResponseHandler';
 
 class DomainsResource {
-	query(q) {
+	query(tld, q) {
 		console.log('DomainsResource query');
-		return fetch(`api/v1/domains?q=example.com`)
+		return fetch(`api/v1/domain/${tld}?name=${q}`)
 			.then(jsonResponseHandler)
 			.catch(err => {
 				console.warn('failed to query domains', err);

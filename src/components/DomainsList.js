@@ -12,10 +12,10 @@ class DomainsList extends React.Component {
 		return (
 			<div className="row">
 				{domains.map(domain => (
-					<div className="small-12 columns">
+					<div key={domain.tld} className="small-12 columns">
 						{domain.isFetching ? <Loader /> : ''}
 						{' '}
-						{domain.tld}
+						{domain.data && domain.data.full_name || domain.tld}
 					</div>
 				))}
 			</div>

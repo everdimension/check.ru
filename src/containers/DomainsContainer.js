@@ -19,7 +19,7 @@ class DomainsContainer extends React.Component {
 		console.log('must query domains', domainName);
 
 		tlds.forEach(tld => this.store.dispatch(
-			fetchDomain(`${domainName}.${tld}`)
+			fetchDomain(tld, domainName)
 		));
 		// this.store.dispatch(
 		// 	fetchDomain(domainName)
