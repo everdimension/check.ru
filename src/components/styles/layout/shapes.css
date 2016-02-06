@@ -1,0 +1,32 @@
+.check-icon {
+	display: inline-block;
+	width: .5em;
+	height: 1em;
+	border-bottom: 1px solid;
+	border-right: 1px solid;
+	transform: translateX(.3em) rotate(45deg);
+}
+
+.cross-icon {
+	position: relative;
+	display: inline-block;
+	height: 1em;
+	vertical-align: middle;
+	/*line-height: 1;*/
+	&:after, &:before {
+		content: ' ';
+		display: inline-block;
+		width: 1.1em;
+		/*height: 1px;*/
+		border-bottom: 1px solid;
+		/*background-color: black;*/
+	}
+	&:after {
+		transform: translateY(-.5em) rotate(45deg);
+	}
+	&:before {
+		position: absolute;
+		/*top: 1em;*/
+		transform: translateY(.5em) rotate(-45deg);
+	}
+}

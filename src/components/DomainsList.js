@@ -10,15 +10,25 @@ class DomainsList extends React.Component {
 	render () {
 		const { domains } = this.props;
 		return (
-			<div className="row">
+			<ul className="List List--unstyled List--md">
 				{domains.map(domain => (
-					<div key={domain.tld} className="small-12 columns">
-						{domain.isFetching ? <Loader /> : ''}
-						{' '}
+					domain.isFetching ?
+					<li key={domain.tld} className="List__item">
 						{domain.data && domain.data.full_name || domain.tld}
-					</div>
+						{' '}
+						{domain.isFetching ? <Loader /> : ''}
+						{!domain.isFetching ?
+							<span className="text-success check-icon"></span> : ''}
+					</li>
+					:
+					<li key={domain.tld} className="List__item">
+						{domain.data.full_name || domain.tld}
+						{' '}
+						{domain.data.available && <span className="text-success check-icon"></span>}
+						{!domain.data.available && <span className="text-danger cross-icon"></span>}
+					</li>
 				))}
-			</div>
+			</ul>
 		)
 	}
 }

@@ -5,6 +5,7 @@ $app-clr-error: #FA374D;
 
 $text-muted: #666;
 $text-light: #999;
+$text-success: #36C57D;
 
 /*foundation breakpoints*/
 $breakpoint-small: 0;

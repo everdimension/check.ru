@@ -2,3 +2,19 @@
 {
 	box-shadow: none;
 }*/
+
+.InputGroup	{
+
+	position: relative;
+	margin-bottom: 1rem;
+
+	&__control {
+		margin-bottom: 0;
+	}
+
+	&__progress-line {
+		position: absolute;
+		bottom: 0;
+	}
+
+}

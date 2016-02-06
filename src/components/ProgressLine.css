@@ -1,0 +1,10 @@
+.ProgressLine {
+	height: 2px;
+	background-color: #3C6;
+	width: 0px;
+	transition: width .35s linear;
+	&.notransition {
+		transition: none;
+		width: 0;
+	}
+}

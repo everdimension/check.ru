@@ -1,9 +1,12 @@
 import { List, Map } from 'immutable';
 import { Domains } from '../../api/Domains';
+import tlds from '../../tlds';
 
 const initialState = {
 	data: [],
-	isFetching: false
+	isFetching: false,
+	fetchProgress: 0,
+	populated: false
 };
 export default function domains(state = initialState, action) {
 	switch (action.type) {
@@ -30,12 +33,14 @@ export default function domains(state = initialState, action) {
 			});
 			return Object.assign({}, newState, {
 				isFetching: newState.data.some(domain => domain.isFetching),
+				fetchProgress: (newState.data.filter(domain => !domain.isFetching).length / newState.data.length) * 100,
 				error: newState.data.some(domain => domain.error)
 			});
 
 		case ADD_DOMAIN:
 			return Object.assign({}, state, {
-				data: [...state.data, domainReducer(null, action)]
+				data: [...state.data, domainReducer(null, action)],
+				populated: true
 			});
 
 	}
@@ -106,7 +111,12 @@ export function receiveDomain(tld, data, error) {
 }
 
 export function fetchDomain(tld, query) {
-	return dispatch => {
+	return (dispatch, getState) => {
+		if (!getState().domains.populated) {
+			for (let tld of tlds) {
+				dispatch(addDomain({ tld }));
+			}
+		}
 		dispatch(requestDomain(tld, query));
 
 		return Domains.query(tld, query)
@@ -114,8 +124,7 @@ export function fetchDomain(tld, query) {
 			.catch(err => {
 				// dispatch(receiveDomain(tld, err, true))
 				dispatch(receiveDomain(tld, {
-					name: query,
-					available: true
+					error: true
 				}));
 				return err;
 

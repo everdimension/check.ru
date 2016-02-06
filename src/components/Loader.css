@@ -6,7 +6,6 @@ $b: 1px;
 	width: 1em;
 	height: 1em;
 	border: $b solid;
-	border-color: inherit;
 	border-top-color: transparent;
 	border-radius: 50%;
 	vertical-align: middle;

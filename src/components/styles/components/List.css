@@ -1,0 +1,18 @@
+.List {
+
+	&--unstyled {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	&--md {
+		.List__item {
+			padding: 15px 0;
+			border-bottom: 1px solid #ddd;
+			&:last-child {
+				border-bottom: none;
+			}
+		}
+	}
+}

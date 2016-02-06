@@ -9,11 +9,6 @@ import store from './store';
 import HomePage from './pages/HomePage';
 import App from './components/App';
 import { addDomain } from './redux/modules/domains';
-import tlds from './tlds';
-
-for (let tld of tlds) {
-	store.dispatch(addDomain({ tld }));
-}
 
 function render() {
 	ReactDOM.render(

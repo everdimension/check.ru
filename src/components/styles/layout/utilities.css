@@ -6,6 +6,14 @@
 	color: $text-light;
 }
 
+.text-success {
+	color: $text-success;
+}
+
+.text-danger {
+	color: $app-clr-error;
+}
+
 .text-thin {
 	font-weight: lighter;
 }

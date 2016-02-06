@@ -5,8 +5,10 @@
 @import './styles/layout/forms.css';
 @import './styles/layout/panels.css';
 @import './styles/layout/scaffolding.css';
+@import './styles/layout/shapes.css';
 @import './styles/layout/type.css';
 @import './styles/layout/utilities.css';
 
 /*components*/
 @import './components/SummaryTable.css';
+@import './components/List.css';
