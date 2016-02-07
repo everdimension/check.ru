@@ -11,10 +11,13 @@
 	position: relative;
 	display: inline-block;
 	height: 1em;
+	width: 1em;
 	vertical-align: middle;
-	/*line-height: 1;*/
 	&:after, &:before {
 		content: ' ';
+		position: absolute;
+		top: .5em;
+		left: 0;
 		display: inline-block;
 		width: 1.1em;
 		/*height: 1px;*/
@@ -22,11 +25,23 @@
 		/*background-color: black;*/
 	}
 	&:after {
-		transform: translateY(-.5em) rotate(45deg);
+		transform: rotate(45deg);
 	}
 	&:before {
-		position: absolute;
 		/*top: 1em;*/
-		transform: translateY(.5em) rotate(-45deg);
+		transform: rotate(-45deg);
+	}
+}
+
+.circled-icon {
+	display: inline-block;
+	width: 1.7em;
+	height: 1.7em;
+	border: 1px solid;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 1.4em;
+	[class$=-icon] {
+		line-height: 1.4;
 	}
 }

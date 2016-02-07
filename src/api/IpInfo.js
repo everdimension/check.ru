@@ -5,7 +5,6 @@ class IpInfoClass {
 		return fetch('api/v1/info')
 			.then(jsonResponseHandler)
 			.catch(err => {
-				console.warn('err info', err);
 				throw err;
 			});
 	}

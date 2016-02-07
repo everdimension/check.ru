@@ -6,7 +6,6 @@ class DomainsResource {
 		return fetch(`api/v1/domain/${tld}?name=${q}`)
 			.then(jsonResponseHandler)
 			.catch(err => {
-				console.warn('failed to query domains', err);
 				throw err;
 			});
 	}

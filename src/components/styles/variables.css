@@ -7,6 +7,8 @@ $text-muted: #666;
 $text-light: #999;
 $text-success: #36C57D;
 
+$link-clr: #36B4E4;
+
 /*foundation breakpoints*/
 $breakpoint-small: 0;
 $breakpoint-medium: 640px;

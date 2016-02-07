@@ -1,13 +1,9 @@
 var webpack                = require('webpack');
-var autoprefixer           = require('autoprefixer');
-var postcssImport          = require('postcss-import');
-var postcssVars            = require('postcss-simple-vars');
-var postcssNested          = require('postcss-nested');
-var postcssCalc            = require('postcss-calc');
-var postcssInlineComment   = require('postcss-inline-comment');
 var SvgStore               = require('webpack-svgstore-plugin');
 var HtmlWebpackPlugin      = require('html-webpack-plugin');
 var path                   = require('path');
+var postcssImport          = require('postcss-import');
+var postcssLoaders         = require('./tools/postcssLoaders');
 var isProduction           = process.env.NODE_ENV === 'production';
 var isDevelopment          = !isProduction;
 var PORT                   = 8070;
@@ -63,9 +59,8 @@ var config = {
 		return [
 			postcssImport({
 				addDependencyTo: webpack
-			}),
-			postcssInlineComment, autoprefixer, postcssVars, postcssNested, postcssCalc
-		];
+			})
+		].concat(postcssLoaders);
 	},
 
 	plugins: [

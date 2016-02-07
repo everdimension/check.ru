@@ -34,7 +34,8 @@ export default function domains(state = initialState, action) {
 			return Object.assign({}, newState, {
 				isFetching: newState.data.some(domain => domain.isFetching),
 				fetchProgress: (newState.data.filter(domain => !domain.isFetching).length / newState.data.length) * 100,
-				error: newState.data.some(domain => domain.error)
+				error: newState.data.some(domain => domain.error),
+				errorAll: newState.data.every(domain => domain.error)
 			});
 
 		case ADD_DOMAIN:
@@ -64,7 +65,7 @@ function domainReducer(state = initialDomainState, action) {
 		case RECEIVE_DOMAIN:
 			const newState = Object.assign({}, state, {
 				isFetching: false,
-				data: action.data,
+				data: action.data || state.data,
 				error: action.error
 			});
 			return newState;
@@ -94,7 +95,8 @@ export function requestDomain(tld, query) {
 		type: REQUEST_DOMAIN,
 		tld,
 		data: {
-			full_name: `${query}.${tld}`
+			full_name: `${query}.${tld}`,
+			sld: query
 		}
 
 	};
@@ -122,10 +124,7 @@ export function fetchDomain(tld, query) {
 		return Domains.query(tld, query)
 			.then( res => dispatch(receiveDomain(tld, res)) )
 			.catch(err => {
-				// dispatch(receiveDomain(tld, err, true))
-				dispatch(receiveDomain(tld, {
-					error: true
-				}));
+				dispatch(receiveDomain(tld, null, true));
 				return err;
 
 				// throw err;

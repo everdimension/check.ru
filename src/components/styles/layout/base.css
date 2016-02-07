@@ -15,6 +15,19 @@ img {
 	max-width: 100%;
 }
 
+a {
+	color: $link-clr;
+	&:visited {
+		color: color($link-clr saturation(130%));
+	}
+	&:active, &:focus {
+		color: color($link-clr lightness(35%));
+	}
+	&:hover, &:focus {
+		text-decoration: none;
+	}
+}
+
 .svg-icon {
 	width: 1em;
 	height: 1em;

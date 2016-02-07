@@ -33,11 +33,9 @@ class DomainSearch extends React.Component {
 		const { fetchProgress: currentProgress } = this.props.domains;
 		const { fetchProgress: prevProgress } = prevProps.domains;
 		const completed = currentProgress === 100;
-		console.log(currentProgress, prevProgress, completed);
 
 		if (completed && currentProgress !== prevProgress) {
 			setTimeout(() => {
-				console.log('settint state showProgress to false');
 				this.setState({
 					showProgress: false
 				});
@@ -71,7 +69,7 @@ class DomainSearch extends React.Component {
 				</p>
 
 				<div className="DomainSearch__results">
-					{ domains.error &&
+					{ domains.errorAll &&
 						<Alert>
 							<p>Some error</p>
 						</Alert>
@@ -83,7 +81,7 @@ class DomainSearch extends React.Component {
 							<Loader /> : null*/
 							}
 							{domains.data.length ?
-							<DomainsList domains={domains.data} />
+							<DomainsList domains={domains.data} fetchDomain={this.props.onSearch} />
 							: null}
 						</div>
 					</div>
