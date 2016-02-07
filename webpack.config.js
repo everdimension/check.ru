@@ -6,14 +6,29 @@ var postcssNested          = require('postcss-nested');
 var postcssCalc            = require('postcss-calc');
 var postcssInlineComment   = require('postcss-inline-comment');
 var SvgStore               = require('webpack-svgstore-plugin');
+var HtmlWebpackPlugin      = require('html-webpack-plugin');
 var path                   = require('path');
-var PORT = 8070;
+var isProduction           = process.env.NODE_ENV === 'production';
+var isDevelopment          = !isProduction;
+var PORT                   = 8070;
 
 var paths = {
 	src: path.join(__dirname, '/src'),
 	dist: './dist',
 	distAbsolute: __dirname + '/dist'
 };
+
+var htmlWebpackPluginConfig = {
+	inject: true,
+	template: path.join(paths.src, 'index.html')
+};
+
+if (isProduction) {
+	htmlWebpackPluginConfig.googleAnalytics = {
+		trackingId: 'UA-XXXXXXPP-X',
+		pageViewOnLoad: true
+	};
+}
 
 var config = {
 	entry: [
@@ -55,6 +70,7 @@ var config = {
 
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
+		new HtmlWebpackPlugin(htmlWebpackPluginConfig),
 		new webpack.ProvidePlugin({
 			'whatwgfetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
 		}),
