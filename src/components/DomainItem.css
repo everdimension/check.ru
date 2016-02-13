@@ -1,0 +1,10 @@
+.DomainItem {
+	&__right {
+		float: right;
+	}
+
+	&__more-info {
+		max-height: 300px;
+	}
+
+}

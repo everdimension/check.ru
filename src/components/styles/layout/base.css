@@ -28,6 +28,11 @@ a {
 	}
 }
 
+.ui-link {
+	text-decoration: none;
+	border-bottom: 1px dotted;
+}
+
 .svg-icon {
 	width: 1em;
 	height: 1em;

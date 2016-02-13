@@ -67,7 +67,7 @@ var config = {
 		new webpack.HotModuleReplacementPlugin(),
 		new HtmlWebpackPlugin(htmlWebpackPluginConfig),
 		new webpack.ProvidePlugin({
-			'whatwgfetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+			'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
 		}),
 		new SvgStore(path.join(paths.src, 'svg', '**/*.svg'), 'svg', {
 			name: '[hash].sprite.svg',
@@ -83,7 +83,8 @@ var config = {
 		hot: true,
 		proxy: {
 			'/api/*': {
-				target: 'http://127.0.0.1:4300'
+				// target: 'http://127.0.0.1:4300'
+				target: 'http://127.0.0.1:8888/checkru_server/public'
 				// secure: false,
 				// changeOrigin: true
 			}

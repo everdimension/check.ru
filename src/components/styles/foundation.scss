@@ -13,4 +13,7 @@
 	font-weight: lighter;
 	border-color: #ddd;
 	background-color: white;
+	&:focus {
+		box-shadow: none;
+	}
 }

@@ -3,19 +3,26 @@ require('./components/styles/foundation.scss');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import  { Router, Route, IndexRoute } from 'react-router';
+import  { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import store from './store';
 import HomePage from './pages/HomePage';
+import DomainsCheckPage from './pages/DomainsCheckPage';
+import DomainsAnalyticsPage from './pages/DomainsAnalyticsPage';
 import App from './components/App';
-import { addDomain } from './redux/modules/domains';
 
 function render() {
 	ReactDOM.render(
 		<Provider store={store}>
-			<App>
-				<HomePage />
-			</App>
+			<Router history={browserHistory}>
+				<Route component={App}>
+					<Route path="/" component={HomePage}>
+						<IndexRoute component={DomainsCheckPage} />
+						<Route path="analytics" component={DomainsAnalyticsPage}></Route>
+					</Route>
+				</Route>
+				<Route path="/dom" component={DomainsCheckPage}></Route>
+			</Router>
 		</Provider>,
 		document.getElementById('app')
 	);

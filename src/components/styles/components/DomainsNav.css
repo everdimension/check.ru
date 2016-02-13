@@ -1,0 +1,46 @@
+.DomainsNav {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	&:after {
+		content: ' ';
+		display: table;
+		clear: both;
+	}
+	&__item {
+		display: inline-block;
+		vertical-align: bottom;
+		> a {
+			display: block;
+			padding: 10px 15px;
+			border: 1px solid #ddd;
+			margin-right: -1px;
+			margin-bottom: -1px;
+			color: $text-default;
+			background-color: white;
+			text-decoration: none;
+
+			&:hover, &.active {
+				color: $link-clr;
+			}
+
+			&.active {
+				position: relative;
+				font-size: 1.2em;
+				color: $link-clr;
+				&:after {
+					content: ' ';
+					display: block;
+					position: absolute;
+					left: 0;
+					bottom: -1px;
+					height: 1px;
+					width: 100%;
+					background-color: white;
+					z-index: 1;
+				}
+			}
+		}
+
+	}
+}

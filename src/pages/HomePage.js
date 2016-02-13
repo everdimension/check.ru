@@ -1,7 +1,7 @@
 import React from 'react';
 import Loader from '../components/Loader';
-import DomainsContainer from '../containers/DomainsContainer';
 import ClientInfoContainer from '../containers/ClientInfoContainer';
+import { Link, IndexLink } from 'react-router';
 
 class HomePage extends React.Component {
 
@@ -14,7 +14,18 @@ class HomePage extends React.Component {
 
 						<br/>
 
-						<DomainsContainer />
+						<nav id="domainsNav">
+							<ul className="DomainsNav">
+								<li className="DomainsNav__item">
+									<IndexLink to="/" activeClassName="active">Whois</IndexLink>
+								</li>
+								<li className="DomainsNav__item">
+									<Link to="/analytics" activeClassName="active">Анализ сайта</Link>
+								</li>
+							</ul>
+						</nav>
+
+						{this.props.children}
 					</div>
 
 				</div>

@@ -1,14 +1,15 @@
 @import './variables.css';
 
 /*layout*/
-@import './styles/layout/base.css';
-@import './styles/layout/forms.css';
-@import './styles/layout/panels.css';
-@import './styles/layout/scaffolding.css';
-@import './styles/layout/shapes.css';
-@import './styles/layout/type.css';
-@import './styles/layout/utilities.css';
+@import './layout/base.css';
+@import './layout/forms.css';
+@import './layout/panels.css';
+@import './layout/scaffolding.css';
+@import './layout/shapes.css';
+@import './layout/type.css';
+@import './layout/utilities.css';
 
 /*components*/
+@import './components/DomainsNav.css';
 @import './components/SummaryTable.css';
 @import './components/List.css';

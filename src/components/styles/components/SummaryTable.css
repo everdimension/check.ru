@@ -1,5 +1,6 @@
 .SummaryTable {
 	padding-top: 20px;
+	/*height: 230px;*/
 	&__row {
 		margin-bottom: 15px;
 	}

@@ -45,3 +45,23 @@
 		line-height: 1.4;
 	}
 }
+
+
+.chevron-icon {
+	display: inline-block;
+	height: .5em;
+	width: .5em;
+	border-right: 1px solid;
+	border-bottom: 1px solid;
+	vertical-align: middle;
+	transform-origin: 75% 75%;
+	transform: translateY(-.17em) rotate(-45deg);
+	transition: transform .18s;
+
+	&--down {
+		transform: translateY(-.1em) rotate(45deg);
+	}
+	&--left {
+		transform: translateY(-.1em) rotate(135deg);
+	}
+}

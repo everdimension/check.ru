@@ -12,7 +12,11 @@ class DomainsContainer extends React.Component {
 		this.queryDomains = this.queryDomains.bind(this);
 	}
 	componentWillMount() {
-		this.store.subscribe(() => this.setState(this.store.getState()));
+		this.unsubscribe = this.store.subscribe(() => this.setState(this.store.getState()));
+	}
+
+	componentWillUnmount() {
+		this.unsubscribe();
 	}
 
 	queryDomains(domainName, tld) {

@@ -35,7 +35,7 @@ class DomainSearch extends React.Component {
 		const completed = currentProgress === 100;
 
 		if (completed && currentProgress !== prevProgress) {
-			setTimeout(() => {
+			this.progressTimer = setTimeout(() => {
 				this.setState({
 					showProgress: false
 				});
@@ -46,6 +46,13 @@ class DomainSearch extends React.Component {
 			});
 		}
 
+	}
+
+	componentWillUnmount() {
+		if (this.progressTimer) {
+			console.info('clearing progress timeout');
+			clearTimeout(this.progressTimer);
+		}
 	}
 
 	render () {
@@ -64,9 +71,6 @@ class DomainSearch extends React.Component {
 						</div>
 					</form>
 				</div>
-				<p>
-					{domains.fetchProgres}%
-				</p>
 
 				<div className="DomainSearch__results">
 					{ domains.errorAll &&
