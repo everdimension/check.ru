@@ -4,6 +4,12 @@ import DomainSearch from '../components/DomainSearch';
 import tlds from '../tlds';
 
 class DomainsContainer extends React.Component {
+	static get contextTypes() {
+		return {
+			store: PropTypes.object
+		};
+	}
+
 	constructor(props, context) {
 		super(props, context);
 		this.store = context.store;
@@ -46,9 +52,5 @@ class DomainsContainer extends React.Component {
 		);
 	}
 }
-
-DomainsContainer.contextTypes = {
-	store: PropTypes.object
-};
 
 export default DomainsContainer;

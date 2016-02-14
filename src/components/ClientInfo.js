@@ -1,16 +1,19 @@
 import React, { PropTypes } from 'react'
 import Loader from './Loader';
 
-class IpInfo extends React.Component {
+class ClientInfo extends React.Component {
+
 	static get propTypes () {
 		return {
 			data: PropTypes.object,
 			loading: PropTypes.bool
 		};
 	}
+
 	render () {
+		const { data } = this.props;
 		return (
-			<div className="panel">
+			<div className="panel panel--transparent">
 				<div className="panel__body SummaryTable">
 					{this.props.loading ? <div className="text-center"><Loader size="large" /></div> : null}
 
@@ -25,7 +28,7 @@ class IpInfo extends React.Component {
 							</div>
 							<div className="medium-9 columns">
 								<span className="SummaryTable__value SummaryTable__value--huge">
-									95.30.43.126
+									{data.ip}
 								</span>
 
 							</div>
@@ -39,7 +42,7 @@ class IpInfo extends React.Component {
 
 							</div>
 							<div className="medium-9 columns">
-								95.30.43.126.broadband.corbina.ru
+								{data.client_machine_name}
 							</div>
 						</div>
 
@@ -51,7 +54,8 @@ class IpInfo extends React.Component {
 
 							</div>
 							<div className="medium-9 columns">
-								<span>Microsoft Windows 10.0</span>
+								{/*<span>Microsoft Windows 10.0</span>*/}
+								{[data.os, data.os_version].join(' ')}
 							</div>
 						</div>
 
@@ -63,7 +67,7 @@ class IpInfo extends React.Component {
 
 							</div>
 							<div className="medium-9 columns">
-								<span>Chrome 46.0.2490.80</span>
+								<span>{[data.browser, data.browser_version].join(' ')}</span>
 							</div>
 						</div>
 
@@ -75,7 +79,11 @@ class IpInfo extends React.Component {
 
 							</div>
 							<div className="medium-9 columns">
-								<span>Russian federation, Krasnodar</span>
+								{/*<span>Russian federation, Krasnodar</span>*/}
+								{[data.city, data.country].join(', ')}
+
+								{ data.lat && <br/> }
+								{ data.lat && [data.lat, data.lng].join(', ') }
 							</div>
 						</div>
 					</div>
@@ -88,4 +96,4 @@ class IpInfo extends React.Component {
 	}
 }
 
-export default IpInfo;
+export default ClientInfo;

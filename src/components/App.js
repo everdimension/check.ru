@@ -6,14 +6,14 @@ class App extends React.Component {
 		return (
 			<div className="App content-wrapper row">
 				<header className="App__header">
-					<div className="row">
+					{/*<div className="row">
 						<div className="small-4 columns">left column</div>
 						<div className="small-4 columns">
 							<span className="PageHeader__logo">
 								App
 							</span>
 						</div>
-					</div>
+					</div>*/}
 				</header>
 
 				<div className="App__body">

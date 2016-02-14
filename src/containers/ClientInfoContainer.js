@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { fetchIpInfo } from '../redux/modules/ipInfo';
-import IpInfo from '../components/IpInfo';
+import ClientInfo from '../components/ClientInfo';
 
 class ClientInfoContainer extends React.Component {
 
@@ -24,7 +24,7 @@ class ClientInfoContainer extends React.Component {
 
 	render() {
 		return (
-			<IpInfo
+			<ClientInfo
 				data={this.state.ipInfo.get('data')}
 				loading={this.state.ipInfo.get('isFetching')}
 			/>
