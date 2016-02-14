@@ -72,6 +72,7 @@ function domainReducer(state = initialDomainState, action) {
 		case ADD_DOMAIN:
 			return {
 				tld: action.domain.tld,
+				price: action.domain.price,
 				isFetching: action.domain.isFetching || false,
 				data: action.domain.data || null
 			};
@@ -116,7 +117,7 @@ export function fetchDomain(tld, query) {
 	return (dispatch, getState) => {
 		if (!getState().domains.populated) {
 			for (let tld of tlds) {
-				dispatch(addDomain({ tld }));
+				dispatch(addDomain(tld));
 			}
 		}
 		dispatch(requestDomain(tld, query));

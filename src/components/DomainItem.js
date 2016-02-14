@@ -70,8 +70,10 @@ class DomainItem extends React.Component {
 				}
 
 				{domain.data.available &&
-					<div className="DomainItem__right">
-						<span>350{'\u20BD'}</span>
+					<div className="DomainItem__right text-right">
+						<span>{domain.price}{'\u20BD'}</span>
+						<br/>
+						<a href="http://dnar.ru" target="_blank">Зарегистрировать</a>
 					</div>
 				}
 

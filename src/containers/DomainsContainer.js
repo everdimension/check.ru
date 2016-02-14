@@ -29,7 +29,7 @@ class DomainsContainer extends React.Component {
 		}
 
 		tlds.forEach(tld => this.store.dispatch(
-			fetchDomain(tld, domainName)
+			fetchDomain(tld.tld, domainName)
 		));
 		// this.store.dispatch(
 		// 	fetchDomain(domainName)
