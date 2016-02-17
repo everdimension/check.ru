@@ -1,11 +1,14 @@
 import React, { PropTypes } from 'react'
-import cx from 'classnames';
+import cx from 'classnames'
 import './ProgressLine.css'
 
-const ProgressLine = ({ progress, className, reset }) => {
-	return (
-		<div className={cx('ProgressLine', className, { 'notransition': reset })} style={{width: progress + '%'}} />
-	);
-};
+class ProgressLine extends React.Component {
+	render() {
+		const { progress, className, reset } = this.props;
+		return (
+			<div className={cx('ProgressLine', className, { 'notransition': reset })} style={{width: progress + '%'}} />
+		);
+	}
+}
 
-export default ProgressLine;
+export default ProgressLine

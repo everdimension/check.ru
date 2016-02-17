@@ -1,16 +1,16 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react';
 import Loader from './Loader';
 
 class ClientInfo extends React.Component {
 
-	static get propTypes () {
+	static get propTypes() {
 		return {
 			data: PropTypes.object,
 			loading: PropTypes.bool
 		};
 	}
 
-	render () {
+	render() {
 		const { data } = this.props;
 		return (
 			<div className="panel panel--transparent">
@@ -54,7 +54,6 @@ class ClientInfo extends React.Component {
 
 							</div>
 							<div className="medium-9 columns">
-								{/*<span>Microsoft Windows 10.0</span>*/}
 								{[data.os, data.os_version].join(' ')}
 							</div>
 						</div>
@@ -79,7 +78,6 @@ class ClientInfo extends React.Component {
 
 							</div>
 							<div className="medium-9 columns">
-								{/*<span>Russian federation, Krasnodar</span>*/}
 								{[data.city, data.country].join(', ')}
 
 								{ data.lat && <br/> }

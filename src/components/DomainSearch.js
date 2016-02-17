@@ -64,10 +64,7 @@ class DomainSearch extends React.Component {
 					<form onSubmit={this.handleSubmit} noValidate>
 						<div className="InputGroup">
 							<input type="text" name="domain" placeholder="http://yoursite.com" required />
-							<ProgressLine className="InputGroup__progress-line"
-								progress={!showProgress ? 0 : domains.fetchProgress}
-								reset={!showProgress}
-							/>
+							<ProgressLine className="InputGroup__progress-line" progress={domains.fetchProgress} />
 						</div>
 					</form>
 				</div>

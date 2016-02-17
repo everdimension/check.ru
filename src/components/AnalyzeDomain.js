@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react';
 
 class AnalyzeDomain extends React.Component {
 	static get propTypes() {
@@ -17,7 +17,7 @@ class AnalyzeDomain extends React.Component {
 		this.props.onQuery('rnd');
 	}
 
-	render () {
+	render() {
 		return (
 			<div>
 				<form onSubmit={this.handleSubmit} noValidate>
@@ -26,8 +26,9 @@ class AnalyzeDomain extends React.Component {
 					</div>
 				</form>
 			</div>
-		)
+		);
 	}
+
 }
 
 export default AnalyzeDomain;

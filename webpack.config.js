@@ -14,6 +14,51 @@ var paths = {
 	distAbsolute: __dirname + '/dist'
 };
 
+var entry = [
+	paths.src + '/index.js'
+];
+
+if (isDevelopment) {
+	entry.unshift(
+		'webpack-dev-server/client?http://0.0.0.0:' + PORT,
+		'webpack/hot/only-dev-server'
+	);
+}
+
+var output = {
+	path: paths.distAbsolute,
+	publicPath: '/',
+	filename: 'app.bundle.js'
+};
+
+var wpModule = {
+	loaders: [
+		{
+			test: /\.jsx?$/,
+			exclude: /node_modules/,
+			loader: 'react-hot!babel'
+		},
+		{
+			test: /\.css$/,
+			loader: 'style!css!postcss'
+		},
+		{
+			test: /\.scss$/,
+			loader: 'style!css!sass'
+		}
+	]
+};
+
+if (isDevelopment) {
+	wpModule.preLoaders = [
+		{
+			test: /\.jsx?$/,
+			exclude: /node_modules/,
+			loader: 'eslint'
+		}
+	];
+}
+
 var htmlWebpackPluginConfig = {
 	inject: true,
 	template: path.join(paths.src, 'index.html')
@@ -26,34 +71,30 @@ if (isProduction) {
 	};
 }
 
-var config = {
-	entry: [
-		'webpack-dev-server/client?http://0.0.0.0:' + PORT,
-		'webpack/hot/only-dev-server',
-		paths.src + '/index.js'
-	],
-	output: {
-		path: paths.distAbsolute,
-		publicPath: '/',
-		filename: 'app.bundle.js'
-	},
-	module: {
-		loaders: [
-			{
-				test: /\.jsx?$/,
-				exclude: /node_modules/,
-				loader: 'react-hot!babel?presets[]=react,presets[]=es2015'
-			},
-			{
-				test: /\.css$/,
-				loader: 'style!css!postcss'
-			},
-			{
-				test: /\.scss$/,
-				loader: 'style!css!sass'
-			}
-		]
-	},
+var plugins = [
+	new HtmlWebpackPlugin(htmlWebpackPluginConfig),
+	new webpack.ProvidePlugin({
+		'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+	}),
+	new SvgStore(path.join(paths.src, 'svg', '**/*.svg'), 'svg', {
+		name: '[hash].sprite.svg',
+		chunk: 'app'
+	})
+];
+
+if (isDevelopment) {
+	plugins.unshift(
+		new webpack.HotModuleReplacementPlugin()
+	);
+}
+
+
+// ***************
+
+module.exports = {
+	entry: entry,
+	output: output,
+	module: wpModule,
 
 	postcss: function (webpack) {
 		return [
@@ -63,17 +104,7 @@ var config = {
 		].concat(postcssLoaders);
 	},
 
-	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
-		new HtmlWebpackPlugin(htmlWebpackPluginConfig),
-		new webpack.ProvidePlugin({
-			'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
-		}),
-		new SvgStore(path.join(paths.src, 'svg', '**/*.svg'), 'svg', {
-			name: '[hash].sprite.svg',
-			chunk: 'app'
-		})
-	],
+	plugins: plugins,
 
 	devServer: {
 		hostname: '0.0.0.0',
@@ -92,5 +123,3 @@ var config = {
 		historyApiFallback: true
 	}
 };
-
-module.exports = config;

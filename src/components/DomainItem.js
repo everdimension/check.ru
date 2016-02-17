@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react';
 import Loader from './Loader';
 import cx from 'classnames';
 import './DomainItem.css';
@@ -7,7 +7,10 @@ class DomainItem extends React.Component {
 	static get propTypes() {
 		return {
 			domain: PropTypes.object,
-			refetch: PropTypes.func
+			refetch: PropTypes.func,
+			listClass: PropTypes.shape({
+				listClass: PropTypes.string
+			})
 		};
 	}
 
@@ -33,7 +36,7 @@ class DomainItem extends React.Component {
 		});
 	}
 
-	render () {
+	render() {
 		const { domain, className: listClass } = this.props;
 		const { expanded } = this.state;
 		return (
