@@ -29,32 +29,6 @@ class DomainSearch extends React.Component {
 		}
 	}
 
-	componentDidUpdate(prevProps, prevState) {
-		const { fetchProgress: currentProgress } = this.props.domains;
-		const { fetchProgress: prevProgress } = prevProps.domains;
-		const completed = currentProgress === 100;
-
-		if (completed && currentProgress !== prevProgress) {
-			this.progressTimer = setTimeout(() => {
-				this.setState({
-					showProgress: false
-				});
-			}, 600);
-		} else if (!this.state.showProgress && this.props.domains.isFetching) {
-			this.setState({
-				showProgress: true
-			});
-		}
-
-	}
-
-	componentWillUnmount() {
-		if (this.progressTimer) {
-			console.info('clearing progress timeout');
-			clearTimeout(this.progressTimer);
-		}
-	}
-
 	render () {
 		const { domains } = this.props;
 		const { showProgress } = this.state;

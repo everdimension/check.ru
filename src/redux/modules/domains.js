@@ -12,14 +12,17 @@ export default function domains(state = initialState, action) {
 	switch (action.type) {
 
 		case REQUEST_DOMAIN:
-			return Object.assign({}, state, {
-				data: state.data.map((domain) => {
+			const stateAfter = Object.assign({}, state, {
+				data: state.data.map(domain => {
 					if (domain.tld === action.tld) {
 						return domainReducer(domain, action);
 					}
 					return domain;
-				}),
-				isFetching: true
+				})
+			});
+			return Object.assign({}, stateAfter, {
+				isFetching: true,
+				fetchProgress: (stateAfter.data.filter(domain => !domain.isFetching).length / stateAfter.data.length) * 100
 			});
 
 		case RECEIVE_DOMAIN:
