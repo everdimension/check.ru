@@ -3,6 +3,7 @@
 /*layout*/
 @import './layout/base.css';
 @import './layout/forms.css';
+@import './layout/media.css';
 @import './layout/panels.css';
 @import './layout/scaffolding.css';
 @import './layout/shapes.css';
@@ -11,5 +12,6 @@
 
 /*components*/
 @import './components/DomainsNav.css';
+@import './components/InfoCard.css';
 @import './components/SummaryTable.css';
 @import './components/List.css';

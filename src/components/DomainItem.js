@@ -68,6 +68,7 @@ class DomainItem extends React.Component {
 					{!domain.data.available &&
 						<a href="#" onClick={this.toggleMore} className="DomainItem__right">
 							Подробнее
+							{' '}
 							<span className={cx(
 									'chevron-icon', { 'chevron-icon--down': expanded }
 								)}

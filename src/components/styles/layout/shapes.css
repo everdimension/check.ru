@@ -1,16 +1,23 @@
 .check-icon {
 	display: inline-block;
-	width: .5em;
-	height: 1em;
-	border-bottom: 1px solid;
-	border-right: 1px solid;
-	transform: translateX(.3em) rotate(45deg);
+	width: 1em;
+	height: 1.2em;
+	vertical-align: middle;
+	&:after {
+		content: '';
+		display: inline-block;
+		width: .5em;
+		height: 1em;
+		border-bottom: 1px solid;
+		border-right: 1px solid;
+		transform: translate3d(.3em, -.2em, 0) rotate(45deg);
+	}
 }
 
 .cross-icon {
 	position: relative;
 	display: inline-block;
-	height: 1em;
+	height: 1.2em;
 	width: 1em;
 	vertical-align: middle;
 	&:after, &:before {

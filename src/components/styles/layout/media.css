@@ -1,0 +1,7 @@
+.thumb {
+	padding: $padding-base;
+	background-color: white;
+	> img {
+		display: block;
+	}
+}

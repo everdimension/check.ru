@@ -53,7 +53,7 @@ class ProgressLine extends React.Component {
 			this.timer = setTimeout(() => this.setState({
 				reset: true,
 				progress: 0
-			}), 5000);
+			}), 500);
 		}
 	}
 

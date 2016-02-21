@@ -18,7 +18,7 @@ class ClientInfo extends React.Component {
 					{this.props.loading ? <div className="text-center"><Loader size="large" /></div> : null}
 
 					{this.props.data ?
-					<div className="SummaryTable">
+					<div className="SummaryTable SummaryTable--padded">
 						<div className="row SummaryTable__row">
 							<div className="medium-3 columns SummaryTable__label text-light text-thin">
 								<span>

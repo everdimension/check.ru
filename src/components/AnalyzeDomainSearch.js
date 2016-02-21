@@ -14,7 +14,10 @@ class AnalyzeDomain extends React.Component {
 
 	handleSubmit(evt) {
 		evt.preventDefault();
-		this.props.onQuery('rnd');
+		if (evt.target.checkValidity()) {
+			console.log('is valid form');
+			this.props.onQuery(evt.target.elements.domainQuery.value);
+		}
 	}
 
 	render() {
@@ -22,7 +25,11 @@ class AnalyzeDomain extends React.Component {
 			<div>
 				<form onSubmit={this.handleSubmit} noValidate>
 					<div className="InputGroup">
-						<input name="domainQuery" type="text" placeholder="Введите полное название домена" />
+						<input name="domainQuery"
+							type="text"
+							placeholder="Введите полное название домена"
+							required
+						/>
 					</div>
 				</form>
 			</div>

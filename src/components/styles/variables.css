@@ -10,6 +10,12 @@ $text-success: #36C57D;
 
 $link-clr: #36B4E4;
 
+$padding-base-lg: 20px;
+$padding-base: 10px;
+$padding-base-sm: 6px;
+
+$gap-base: $padding-base;
+
 /*foundation breakpoints*/
 $breakpoint-small: 0;
 $breakpoint-medium: 640px;

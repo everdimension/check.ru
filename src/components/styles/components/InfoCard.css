@@ -1,0 +1,5 @@
+.InfoCard {
+	&__heading {
+		margin-bottom: $gap-base;
+	}
+}

@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
-import AnalyzeDomain from '../components/AnalyzeDomain';
+import AnalyzeDomainSearch from '../components/AnalyzeDomainSearch';
+import AnalyzeDomainResults from '../components/AnalyzeDomainResults';
 
 class AnalyzeContainer extends React.Component {
 
@@ -23,9 +24,12 @@ class AnalyzeContainer extends React.Component {
 
 	render() {
 		return (
-			<AnalyzeDomain
-				onQuery={this.analyze}
-			/>
+			<div>
+				<AnalyzeDomainSearch
+					onQuery={this.analyze}
+				/>
+				<AnalyzeDomainResults />
+			</div>
 		);
 	}
 }
