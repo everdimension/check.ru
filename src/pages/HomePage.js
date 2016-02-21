@@ -1,9 +1,14 @@
-import React from 'react';
-import Loader from '../components/Loader';
+import React, { PropTypes } from 'react';
 import ClientInfoContainer from '../containers/ClientInfoContainer';
 import { Link, IndexLink } from 'react-router';
 
 class HomePage extends React.Component {
+
+	static get propTypes() {
+		return {
+			children: PropTypes.element
+		};
+	}
 
 	render() {
 		return (

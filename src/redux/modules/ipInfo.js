@@ -1,15 +1,20 @@
-import { Map } from 'immutable';
+import Immutable from 'immutable';
 import { IpInfo } from '../../api/IpInfo';
 
-const initialState = Map({
+export const REQUEST_IP_INFO = 'REQUEST_IP_INFO';
+export const RECEIVE_IP_INFO = 'RECEIVE_IP_INFO';
+
+const initialState = Immutable.Map({
 	data: null,
 	isFetching: false
 });
 
 export default function ipInfo(state = initialState, action) {
 	switch (action.type) {
+
 		case REQUEST_IP_INFO:
 			return state.set('isFetching', true);
+
 		case RECEIVE_IP_INFO:
 			return state
 				.set('isFetching', false)
@@ -19,14 +24,12 @@ export default function ipInfo(state = initialState, action) {
 	return state;
 }
 
-export const REQUEST_IP_INFO = 'REQUEST_IP_INFO';
 export function requestIpInfo() {
 	return {
 		type: REQUEST_IP_INFO
 	};
 }
 
-export const RECEIVE_IP_INFO = 'RECEIVE_IP_INFO';
 export function receiveIpInfo(data) {
 	return {
 		type: RECEIVE_IP_INFO,
@@ -47,5 +50,5 @@ export function fetchIpInfo() {
 				console.warn('failed to load ip info');
 				throw err;
 			});
-	}
+	};
 }

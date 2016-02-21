@@ -3,7 +3,7 @@ require('./components/styles/foundation.scss');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import  { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import store from './store';
 import HomePage from './pages/HomePage';
@@ -18,10 +18,10 @@ function render() {
 				<Route component={App}>
 					<Route path="/" component={HomePage}>
 						<IndexRoute component={DomainsCheckPage} />
-						<Route path="analytics" component={DomainsAnalyticsPage}></Route>
+						<Route path="analytics" component={DomainsAnalyticsPage} />
 					</Route>
 				</Route>
-				<Route path="/dom" component={DomainsCheckPage}></Route>
+				<Route path="/dom" component={DomainsCheckPage} />
 			</Router>
 		</Provider>,
 		document.getElementById('app')
@@ -29,7 +29,7 @@ function render() {
 }
 
 
-function run(argument) {
+function run() {
 	render();
 }
 

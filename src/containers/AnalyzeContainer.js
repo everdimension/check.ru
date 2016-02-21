@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react';
 import AnalyzeDomain from '../components/AnalyzeDomain';
 
 class AnalyzeContainer extends React.Component {
@@ -6,7 +6,7 @@ class AnalyzeContainer extends React.Component {
 	static get contextTypes() {
 		return {
 			store: PropTypes.object
-		}
+		};
 	}
 
 	constructor(props, context) {
@@ -21,12 +21,12 @@ class AnalyzeContainer extends React.Component {
 		console.log('should send to api', q);
 	}
 
-	render () {
+	render() {
 		return (
 			<AnalyzeDomain
 				onQuery={this.analyze}
 			/>
-		)
+		);
 	}
 }
 

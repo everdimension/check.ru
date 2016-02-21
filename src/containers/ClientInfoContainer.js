@@ -4,6 +4,12 @@ import ClientInfo from '../components/ClientInfo';
 
 class ClientInfoContainer extends React.Component {
 
+	static get contextTypes() {
+		return {
+			store: PropTypes.object
+		};
+	}
+
 	constructor(props, context) {
 		super(props, context);
 		this.store = context.store;
@@ -31,9 +37,5 @@ class ClientInfoContainer extends React.Component {
 		);
 	}
 }
-
-ClientInfoContainer.contextTypes = {
-	store: PropTypes.object
-};
 
 export default ClientInfoContainer;

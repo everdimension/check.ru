@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes } from 'react';
 import DomainItem from './DomainItem';
 
 class DomainsList extends React.Component {
@@ -9,7 +9,7 @@ class DomainsList extends React.Component {
 		};
 	}
 
-	render () {
+	render() {
 		const { domains } = this.props;
 		return (
 			<ul className="List List--unstyled List--md">
@@ -21,7 +21,7 @@ class DomainsList extends React.Component {
 					/>
 				))}
 			</ul>
-		)
+		);
 	}
 }
 

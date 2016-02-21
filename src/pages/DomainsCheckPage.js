@@ -1,9 +1,8 @@
-import React, { PropTypes } from 'react'
+import React from 'react';
 import DomainsContainer from '../containers/DomainsContainer';
 
 class DomainsCheckPage extends React.Component {
-	render () {
-		console.log('rendering DomainsCheckPage');
+	render() {
 		return (
 			<DomainsContainer />
 		);

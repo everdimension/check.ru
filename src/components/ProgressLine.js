@@ -1,13 +1,13 @@
-import React, { PropTypes } from 'react'
-import cx from 'classnames'
-import './ProgressLine.css'
+import React, { PropTypes } from 'react';
+import cx from 'classnames';
+import './ProgressLine.css';
 
 class ProgressLine extends React.Component {
 	static get propTypes() {
 		return {
-			progress: PropTypes.number.isRequired
+			progress: PropTypes.number.isRequired,
+			className: PropTypes.string
 		};
-		this.timer = null;
 	}
 
 	constructor(props) {
@@ -17,6 +17,7 @@ class ProgressLine extends React.Component {
 			progress: 0,
 			timer: null
 		};
+		this.timer = null;
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -39,7 +40,6 @@ class ProgressLine extends React.Component {
 			reset: false,
 			progress: nextProgress
 		});
-
 	}
 
 	componentDidUpdate() {
@@ -59,19 +59,24 @@ class ProgressLine extends React.Component {
 
 	componentWillUnmount() {
 		if (this.timer) {
-			console.log('unmounting progress');
 			clearTimeout(this.timer);
 		}
 	}
 
 	render() {
-		console.log('rendering progress');
 		const { className } = this.props;
 		const { progress, reset } = this.state;
 		return (
-			<div className={cx('ProgressLine', className, { 'notransition': reset })} style={{width: progress + '%'}} />
+			<div
+				className={cx(
+					'ProgressLine',
+					className,
+					{ notransition: reset }
+				)}
+				style={{ width: `${progress}%` }}
+			/>
 		);
 	}
 }
 
-export default ProgressLine
+export default ProgressLine;

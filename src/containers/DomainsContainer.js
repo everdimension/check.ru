@@ -1,5 +1,5 @@
-import React, { PropTypes } from 'react'
-import { addDomain, fetchDomain } from '../redux/modules/domains';
+import React, { PropTypes } from 'react';
+import { fetchDomain } from '../redux/modules/domains';
 import DomainSearch from '../components/DomainSearch';
 import tlds from '../tlds';
 
@@ -17,6 +17,7 @@ class DomainsContainer extends React.Component {
 
 		this.queryDomains = this.queryDomains.bind(this);
 	}
+
 	componentWillMount() {
 		this.unsubscribe = this.store.subscribe(() => this.setState(this.store.getState()));
 	}
@@ -26,7 +27,6 @@ class DomainsContainer extends React.Component {
 	}
 
 	queryDomains(domainName, tld) {
-
 		if (tld) {
 			this.store.dispatch(
 				fetchDomain(tld, domainName)
@@ -34,16 +34,12 @@ class DomainsContainer extends React.Component {
 			return;
 		}
 
-		tlds.forEach(tld => this.store.dispatch(
-			fetchDomain(tld.tld, domainName)
+		tlds.forEach(domain => this.store.dispatch(
+			fetchDomain(domain.tld, domainName)
 		));
-		// this.store.dispatch(
-		// 	fetchDomain(domainName)
-		// );
-
 	}
 
-	render () {
+	render() {
 		return (
 			<DomainSearch
 				domains={this.state.domains}

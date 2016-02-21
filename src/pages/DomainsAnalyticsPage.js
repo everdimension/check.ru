@@ -1,8 +1,8 @@
-import React, { PropTypes } from 'react'
+import React from 'react';
 import AnalyzeContainer from '../containers/AnalyzeContainer';
 
 class DomainsAnalyticsPage extends React.Component {
-	render () {
+	render() {
 		return (
 			<AnalyzeContainer />
 		);
