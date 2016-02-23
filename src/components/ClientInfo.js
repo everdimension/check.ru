@@ -6,7 +6,7 @@ class ClientInfo extends React.Component {
 	static get propTypes() {
 		return {
 			data: PropTypes.object,
-			loading: PropTypes.bool
+			fetching: PropTypes.bool
 		};
 	}
 
@@ -15,7 +15,7 @@ class ClientInfo extends React.Component {
 		return (
 			<div className="panel panel--transparent">
 				<div className="panel__body SummaryTable">
-					{this.props.loading ? <div className="text-center"><Loader size="large" /></div> : null}
+					{this.props.fetching ? <div className="text-center"><Loader size="large" /></div> : null}
 
 					{this.props.data ?
 					<div className="SummaryTable SummaryTable--padded">

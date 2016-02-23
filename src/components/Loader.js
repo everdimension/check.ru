@@ -6,13 +6,15 @@ class Loader extends React.Component {
 
 	static get propTypes() {
 		return {
-			size: PropTypes.string
+			size: PropTypes.string,
+			centered: PropTypes.bool
 		};
 	}
 
 	render() {
 		const modifierClasses = cx({
-			'Loader--large': this.props.size === 'large'
+			'Loader--large': this.props.size === 'large',
+			'Loader--centered': this.props.centered
 		});
 		return (
 			<div className={`Loader ${modifierClasses}`}></div>

@@ -146,9 +146,8 @@ export function fetchDomain(tld, query) {
 			.then(res => dispatch(receiveDomain(tld, res)))
 			.catch(err => {
 				dispatch(receiveDomain(tld, null, true));
-				return err;
-
-				// throw err;
+				// return err;
+				throw err;
 			});
 	};
 }

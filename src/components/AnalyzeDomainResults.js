@@ -1,13 +1,26 @@
 import React, { PropTypes } from 'react';
 
 class AnalyzeDomainResults extends React.Component {
+
+	static get propTypes() {
+		return {
+			dns: PropTypes.object.isRequired,
+			http: PropTypes.object.isRequired,
+			pagespeed: PropTypes.object.isRequired,
+			whois: PropTypes.object.isRequired
+		};
+	}
+
 	render() {
+		console.log('rendeting analyze results');
+		const { dns, http, whois, pagespeed } = this.props;
+		const scrn = pagespeed.screenshot;
 		return (
 			<div>
 				<div className="row">
 					<div className="small-4 columns">
 						<div className="thumb">
-							<img src="http://unsplash.it/200/220"
+							<img src={`data:${scrn.mime_type};base64,${scrn.data}`}
 								alt="site preview"
 							/>
 						</div>
@@ -17,7 +30,7 @@ class AnalyzeDomainResults extends React.Component {
 						<div className="panel InfoCard">
 							<div className="panel__body">
 								<div className="InfoCard__heading">
-									IMDB.COM
+									{whois.domain}
 								</div>
 
 

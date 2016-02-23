@@ -34,6 +34,12 @@ $b: 1px;
 			height: 3em;
 		}
 	}
+
+	&--centered {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
 }
 
 @keyframes spin {

@@ -32,7 +32,7 @@ class ClientInfoContainer extends React.Component {
 		return (
 			<ClientInfo
 				data={this.state.ipInfo.get('data')}
-				loading={this.state.ipInfo.get('isFetching')}
+				fetching={this.state.ipInfo.get('isFetching')}
 			/>
 		);
 	}
