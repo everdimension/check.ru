@@ -1,4 +1,6 @@
 import React, { PropTypes } from 'react';
+import PageSpeedInfo from './PageSpeedInfo';
+import cx from 'classnames';
 
 class AnalyzeDomainResults extends React.Component {
 
@@ -15,6 +17,9 @@ class AnalyzeDomainResults extends React.Component {
 		console.log('rendeting analyze results');
 		const { dns, http, whois, pagespeed } = this.props;
 		const scrn = pagespeed.screenshot;
+
+		const resSuccess = http.status >= 200 && http.status < 300;
+
 		return (
 			<div>
 				<div className="row">
@@ -27,10 +32,11 @@ class AnalyzeDomainResults extends React.Component {
 					</div>
 
 					<div className="small-8 columns">
-						<div className="panel InfoCard">
+						<div className="panel InfoCard InfoCard--no-overflow">
 							<div className="panel__body">
 								<div className="InfoCard__heading">
-									{whois.domain}
+									<img src={http.favicon} alt="domain favicon" />
+									{whois.regrinfo.domain.name}
 								</div>
 
 
@@ -40,7 +46,7 @@ class AnalyzeDomainResults extends React.Component {
 											Регистратор
 										</div>
 										<div className="small-8 columns">
-											GoDaddy.com, LLC R41-ME (146)
+											{whois.regyinfo.registrar || ''}
 										</div>
 									</div>
 									<div className="row SummaryTable__row">
@@ -48,7 +54,7 @@ class AnalyzeDomainResults extends React.Component {
 											Дата регистрации
 										</div>
 										<div className="small-8 columns">
-											2008-04-29
+											{whois.regrinfo.domain.created}
 										</div>
 									</div>
 									<div className="row SummaryTable__row">
@@ -56,7 +62,7 @@ class AnalyzeDomainResults extends React.Component {
 											Статус
 										</div>
 										<div className="small-8 columns">
-											CLIENT DELETE PROHIBITED,CLIENT RENEW PROHIBITED,CLIENT TRANSFER PROHIBITED,CLIENT UPDATE PROHIBITED
+											{whois.regrinfo.domain.status.join(', ')}
 										</div>
 									</div>
 									<div className="row SummaryTable__row">
@@ -64,7 +70,7 @@ class AnalyzeDomainResults extends React.Component {
 											DNS-серверы
 										</div>
 										<div className="small-8 columns">
-											ns1.linode.com ns2.linode.com ns3.linode.com ns4.linode.com ns5.linode.com
+											{Object.keys(whois.regrinfo.domain.nserver).join(', ')}
 										</div>
 									</div>
 								</div>
@@ -81,7 +87,7 @@ class AnalyzeDomainResults extends React.Component {
 
 				<div className="row">
 					<div className="small-6 columns">
-						<div className="panel">
+						<div className="panel InfoCard InfoCard--no-overflow">
 							<div className="panel__body">
 								<div className="InfoCard__heading">
 									ДИАГНОСТИКА
@@ -99,9 +105,11 @@ class AnalyzeDomainResults extends React.Component {
 										{' '}
 										A-запись
 										<ul>
-											<li>
-												5.9.63.34
-											</li>
+											{dns.A.map(item => (
+												<li key={item.ip}>
+													{item.ip}
+												</li>
+											))}
 										</ul>
 									</li>
 
@@ -110,6 +118,11 @@ class AnalyzeDomainResults extends React.Component {
 										{' '}
 										MX-запись
 										<ul>
+											{dns.MX.map((item, i) => (
+												<li key={i}>
+													{item.target}
+												</li>
+											))}
 											<li>ASPMX2.GOOGLEMAIL.COM</li>
 											<li>ASPMX3.GOOGLEMAIL.COM</li>
 											<li>ASPMX.L.GOOGLE.COM</li>
@@ -124,7 +137,7 @@ class AnalyzeDomainResults extends React.Component {
 					</div>
 
 					<div className="small-6 columns">
-						<div className="panel">
+						<div className="panel InfoCard InfoCard--no-overflow">
 							<div className="panel__body">
 								<div className="InfoCard__heading">
 									Веб-сервер
@@ -136,9 +149,14 @@ class AnalyzeDomainResults extends React.Component {
 											Код ответа:
 										</div>
 										<div className="small-7 columns">
-											200
+											{http.status}
 											{' '}
-											<span className="icon-check text-success"></span>
+											<span
+												className={cx({
+													'check-icon text-success': resSuccess,
+													'cross-icon text-danger': !resSuccess
+												})}
+											/>
 										</div>
 									</div>
 									<div className="row SummaryTable__row">
@@ -146,7 +164,15 @@ class AnalyzeDomainResults extends React.Component {
 											Веб-сервер:
 										</div>
 										<div className="small-7 columns">
-											nginx/1.6.2
+											{http.headers.Server}
+										</div>
+									</div>
+									<div className="row SummaryTable__row">
+										<div className="small-5 columns text-muted text-thin SummaryTable__label">
+											Кодировка сайта:
+										</div>
+										<div className="small-7 columns">
+											{http.charset}
 										</div>
 									</div>
 								</div>
@@ -157,22 +183,13 @@ class AnalyzeDomainResults extends React.Component {
 
 				<br/>
 
-				<div className="panel">
+				<div className="panel InfoCard InfoCard--no-overflow">
 					<div className="panel__body">
 						<div className="InfoCard__heading">
 							Советы по оптимизации
 						</div>
 
-						<ul className="List List--icons">
-							<li>
-								<span className="List__icon check-icon text-success"></span>
-								Не используйте переадресацию с целевой страницы
-							</li>
-							<li>
-								<span className="List__icon cross-icon text-danger"></span>
-								Включите сжатие
-							</li>
-						</ul>
+						<PageSpeedInfo data={pagespeed} />
 					</div>
 				</div>
 			</div>

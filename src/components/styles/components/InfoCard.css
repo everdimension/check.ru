@@ -1,4 +1,9 @@
 .InfoCard {
+
+	&--no-overflow {
+		overflow: auto;
+	}
+
 	&__heading {
 		margin-bottom: $gap-base;
 		text-transform: uppercase;
