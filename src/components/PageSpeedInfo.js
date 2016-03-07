@@ -10,7 +10,26 @@ class PageSpeedInfo extends React.Component {
 
 	render() {
 		console.log('rendering PageSpeedInfo');
-		const { score } = this.props.data;
+		const { score, formattedResults } = this.props.data;
+
+		const rules = [];
+		const { ruleResults } = formattedResults;
+		for (const rule in ruleResults) {
+			if (ruleResults.hasOwnProperty(rule)) {
+				rules.push(
+					<li key={rule}>
+						<span
+							className={cx('List__icon', {
+								'check-icon text-success': !ruleResults[rule].ruleImpact,
+								'cross-icon text-danger': ruleResults[rule].ruleImpact
+							})}
+						/>
+						{ruleResults[rule].localizedRuleName}
+					</li>
+				);
+			}
+		}
+
 		return (
 			<div className="PageSpeedInfo">
 				<p className="PageSpeedInfo__score">
@@ -25,14 +44,7 @@ class PageSpeedInfo extends React.Component {
 					</small>
 				</p>
 				<ul className="List List--icons">
-					<li>
-						<span className="List__icon check-icon text-success"></span>
-						Не используйте переадресацию с целевой страницы
-					</li>
-					<li>
-						<span className="List__icon cross-icon text-danger"></span>
-						Включите сжатие
-					</li>
+					{rules}
 				</ul>
 			</div>
 		);

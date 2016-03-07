@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-class AnalyzeDomain extends React.Component {
+class AnalyzeDomainSearch extends React.Component {
 	static get propTypes() {
 		return {
 			onQuery: PropTypes.func.isRequired
@@ -38,4 +38,4 @@ class AnalyzeDomain extends React.Component {
 
 }
 
-export default AnalyzeDomain;
+export default AnalyzeDomainSearch;

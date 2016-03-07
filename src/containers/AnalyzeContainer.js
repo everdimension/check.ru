@@ -44,9 +44,7 @@ class AnalyzeContainer extends React.Component {
 
 		return (
 			<div>
-				<AnalyzeDomainSearch
-					onQuery={this.analyze}
-				/>
+				<AnalyzeDomainSearch onQuery={this.analyze} />
 				{ isFetching &&
 					<Loader size="large" centered />
 				}
