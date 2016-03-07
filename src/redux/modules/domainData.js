@@ -52,6 +52,7 @@ export function fetchDomainCheck(query) {
 		return DomainCheck.get(query)
 			.then(res => dispatch(receiveDomainCheck(res)))
 			.catch(err => {
+				console.error('err', err);
 				dispatch(receiveDomainCheck(null, {
 					errCode: err.errCode,
 					errMessage: err.errMessage
