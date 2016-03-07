@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import Loader from './Loader';
+import ShowMore from './ShowMore';
 import cx from 'classnames';
 import './DomainItem.css';
 
@@ -14,11 +15,7 @@ class DomainItem extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {
-			expanded: false
-		};
 		this.refetch = this.refetch.bind(this);
-		this.toggleMore = this.toggleMore.bind(this);
 	}
 
 	refetch(evt) {
@@ -27,16 +24,8 @@ class DomainItem extends React.Component {
 		this.props.refetch(sld, tld);
 	}
 
-	toggleMore(evt) {
-		evt.preventDefault();
-		this.setState({
-			expanded: !this.state.expanded
-		});
-	}
-
 	render() {
 		const { domain, className: listClass } = this.props;
-		const { expanded } = this.state;
 		return (
 			domain.isFetching ?
 				<li key={domain.tld} className={listClass}>
@@ -66,14 +55,11 @@ class DomainItem extends React.Component {
 			:
 				<li key={domain.tld} className={cx(listClass, 'DomainItem')}>
 					{!domain.data.available &&
-						<a href="#" onClick={this.toggleMore} className="DomainItem__right">
-							Подробнее
-							{' '}
-							<span className={cx(
-									'chevron-icon', { 'chevron-icon--down': expanded }
-								)}
-							/>
-						</a>
+						<ShowMore
+							text="Подробнее"
+							target={`raw_${domain.tld}`}
+							className="DomainItem__right"
+						/>
 					}
 
 					{domain.data.available &&
@@ -96,8 +82,8 @@ class DomainItem extends React.Component {
 						{!domain.data.available && 'домен занят'}
 					</small>
 
-					<pre style={{ display: expanded ? 'block' : 'none' }}
-						className={cx('DomainItem__more-info', { expanded })}
+					<pre id={`raw_${domain.tld}`} style={{ display: 'none' }}
+						className={cx('DomainItem__more-info')}
 					>
 						{domain.data.details.raw}
 					</pre>
