@@ -4,14 +4,18 @@ import './Alert.css';
 class Alert extends React.Component {
 	static get propTypes() {
 		return {
-			children: PropTypes.element.isRequired
+			children: PropTypes.any.isRequired
 		};
+	}
+
+	componentWillMount() {
+		console.log('cwm Alert');
 	}
 
 	render() {
 		return (
 			<div className="Alert Alert--error">
-				{this.props.children}
+				{this.props.children || 'stuff'}
 			</div>
 		);
 	}
