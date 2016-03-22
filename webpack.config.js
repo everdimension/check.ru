@@ -53,7 +53,7 @@ if (isDevelopment) {
 	wpModule.preLoaders = [
 		{
 			test: /\.jsx?$/,
-			exclude: /node_modules/,
+			exclude: /(node_modules|lib)/,
 			loader: 'eslint'
 		}
 	];

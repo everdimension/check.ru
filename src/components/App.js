@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import AnimatedBg from './AnimatedBg';
 import './App.css';
 
 class App extends React.Component {
@@ -11,6 +12,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className="App content-wrapper row">
+				<AnimatedBg />
 				<header className="App__header">
 					{/* <div className="row">
 						<div className="small-4 columns">left column</div>
