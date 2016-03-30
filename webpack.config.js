@@ -37,14 +37,15 @@ var wpModule = {
 			test: /\.jsx?$/,
 			exclude: /node_modules/,
 			loader: 'react-hot!babel'
-		},
-		{
+		}, {
 			test: /\.css$/,
 			loader: 'style!css!postcss'
-		},
-		{
+		}, {
 			test: /\.scss$/,
 			loader: 'style!css!sass'
+		}, {
+			test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
+			loader: 'url-loader?limit=10000',
 		}
 	]
 };
