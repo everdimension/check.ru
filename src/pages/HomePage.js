@@ -35,7 +35,7 @@ class HomePage extends React.Component {
 
 				</div>
 
-				<div className="row">
+				{/* <div className="row">
 					<div className="small-12 column">
 						<div className="row">
 							<div className="small-12 column">
@@ -50,7 +50,7 @@ class HomePage extends React.Component {
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> */}
 
 			</div>
 		);

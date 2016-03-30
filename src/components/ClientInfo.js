@@ -22,7 +22,7 @@ class ClientInfo extends React.Component {
 						<div className="row SummaryTable__row">
 							<div className="medium-3 columns SummaryTable__label text-light text-thin">
 								<span>
-									Your IP address
+									Ваш IP адрес
 								</span>
 
 							</div>
@@ -37,7 +37,7 @@ class ClientInfo extends React.Component {
 						<div className="row SummaryTable__row">
 							<div className="medium-3 columns SummaryTable__label text-light text-thin">
 								<span>
-									Computer name
+									Имя компьютера
 								</span>
 
 							</div>
@@ -49,7 +49,7 @@ class ClientInfo extends React.Component {
 						<div className="row SummaryTable__row">
 							<div className="medium-3 columns SummaryTable__label text-light text-thin">
 								<span>
-									Operating system
+									Операционная система
 								</span>
 
 							</div>
@@ -61,7 +61,7 @@ class ClientInfo extends React.Component {
 						<div className="row SummaryTable__row">
 							<div className="medium-3 columns SummaryTable__label text-light text-thin">
 								<span>
-									Your browser
+									Ваш браузер
 								</span>
 
 							</div>
@@ -73,7 +73,7 @@ class ClientInfo extends React.Component {
 						<div className="row SummaryTable__row">
 							<div className="medium-3 columns SummaryTable__label text-light text-thin">
 								<span>
-									Your location
+									Местоположение
 								</span>
 
 							</div>
