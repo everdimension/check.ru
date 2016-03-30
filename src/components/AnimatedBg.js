@@ -1,8 +1,8 @@
 import React from 'react';
-require('babel!../lib/AnimatedBackground/TweenLite.min.js');
-require('babel!../lib/AnimatedBackground/EasePack.min.js');
-require('babel!../lib/AnimatedBackground/rAF.js');
-require('babel!../lib/AnimatedBackground/main.js');
+require('../lib/AnimatedBackground/TweenLite.min.js');
+require('../lib/AnimatedBackground/EasePack.min.js');
+require('../lib/AnimatedBackground/rAF.js');
+require('../lib/AnimatedBackground/main.js');
 import './AnimatedBg.css';
 
 class AnimatedBg extends React.Component {
