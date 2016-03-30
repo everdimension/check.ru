@@ -1,12 +1,17 @@
 @import '../styles/variables';
 
 .Logo {
-	margin-bottom: $gap-base;
+	margin-top: calc($gap-base + 2px);
+	margin-bottom: calc($gap-base + 2px);
 	padding-left: $gap-base;
 	padding-right: $gap-base;
 
 	@media(min-width: $app-width-max) {
 		padding-left: 0;
 		padding-right: 0;
+	}
+
+	&__img {
+		display: block;
 	}
 }
