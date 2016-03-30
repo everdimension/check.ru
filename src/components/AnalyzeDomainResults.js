@@ -49,7 +49,7 @@ class AnalyzeDomainResults extends React.Component {
 					</div>
 				</div>
 
-				<br/>
+				<br />
 
 				<div className="row">
 					<div className="small-6 columns">
@@ -147,7 +147,7 @@ class AnalyzeDomainResults extends React.Component {
 					</div>
 				</div>
 
-				<br/>
+				<br />
 
 				<div className="panel InfoCard InfoCard--no-overflow">
 					<div className="panel__body">

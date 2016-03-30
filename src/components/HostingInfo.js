@@ -48,7 +48,7 @@ class HostingInfo extends React.Component {
 					</div>
 				</div>
 
-				<br/>
+				<br />
 
 				<ShowMore
 					text="Вся информация WHOIS"

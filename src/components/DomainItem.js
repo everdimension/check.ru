@@ -65,7 +65,7 @@ class DomainItem extends React.Component {
 					{domain.data.available &&
 						<div className="DomainItem__right text-right">
 							<span>{domain.price}{'\u20BD'}</span>
-							<br/>
+							<br />
 							<a href="http://dnar.ru" target="_blank">Зарегистрировать</a>
 						</div>
 					}
@@ -76,7 +76,7 @@ class DomainItem extends React.Component {
 					{' '}
 					{domain.data.available && <span className="text-success check-icon"></span>}
 					{!domain.data.available && <span className="text-danger cross-icon"></span>}
-					<br/>
+					<br />
 					<small className="text-muted">
 						{domain.data.available && 'домен свободен'}
 						{!domain.data.available && 'домен занят'}

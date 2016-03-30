@@ -80,7 +80,7 @@ class ClientInfo extends React.Component {
 							<div className="medium-9 columns">
 								{[data.city, data.country].join(', ')}
 
-								{ data.lat && <br/> }
+								{ data.lat && <br /> }
 								{ data.lat && [data.lat, data.lng].join(', ') }
 							</div>
 						</div>

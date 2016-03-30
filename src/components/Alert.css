@@ -7,4 +7,7 @@
 		background-color: $app-clr-error;
 		font-weight: lighter;
 	}
+	p {
+		margin: 0;
+	}
 }

@@ -17,7 +17,7 @@ class HomePage extends React.Component {
 					<div className="small-12 columns">
 						<ClientInfoContainer />
 
-						<br/>
+						<br />
 
 						<nav id="domainsNav">
 							<ul className="DomainsNav">

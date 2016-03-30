@@ -34,7 +34,7 @@ class PageSpeedInfo extends React.Component {
 			<div className="PageSpeedInfo">
 				<p className="PageSpeedInfo__score">
 					Оценка сайта
-					<br/>
+					<br />
 					<small>
 						<span
 							className={cx('PageSpeedInfo__score-label', {
