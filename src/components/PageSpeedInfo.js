@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import cx from 'classnames';
+import Collapse from './Collapse';
 
 class PageSpeedInfo extends React.Component {
 	static get propTypes() {
@@ -24,7 +25,15 @@ class PageSpeedInfo extends React.Component {
 								'cross-icon text-danger': ruleResults[rule].ruleImpact
 							})}
 						/>
-						{ruleResults[rule].localizedRuleName}
+
+						{ruleResults[rule].ruleImpact ?
+							<Collapse>
+								<a href="#" className="ui-link">{ruleResults[rule].localizedRuleName}</a>
+								<p>Lorem ipspansum dolor sit amet.</p>
+							</Collapse> :
+							<span>{ruleResults[rule].localizedRuleName}</span>
+
+						}
 					</li>
 				);
 			}
