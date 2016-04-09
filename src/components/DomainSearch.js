@@ -30,7 +30,16 @@ class DomainSearch extends React.Component {
 				<div className="DomainSearch__search">
 					<form onSubmit={this.handleSubmit} noValidate>
 						<div className="InputGroup">
-							<input type="text" name="domain" placeholder="http://yoursite.com" required />
+							<div className="InputWrapper">
+								<input type="text" name="domain" placeholder="http://yoursite.com" required />
+								<button className="InputWrapper__icon-button">
+									<svg className="svg-icon search-icon">
+										<use xlinkHref="#icon-search" />
+									</svg>
+								</button>
+							</div>
+
+
 							<ProgressLine
 								className="InputGroup__progress-line"
 								progress={domains.fetchProgress}

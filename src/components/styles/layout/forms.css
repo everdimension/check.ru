@@ -1,3 +1,4 @@
+$input-height: 2.4375rem;
 /*[type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'], textarea
 {
 	box-shadow: none;
@@ -17,4 +18,23 @@
 		bottom: 0;
 	}
 
+}
+
+.InputWrapper {
+	position: relative;
+	&__icon-button {
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: $input-height;
+		background-color: transparent;
+		border: none;
+		padding: 0 20px;
+		font-size: 1.5em;
+		color: $text-light;
+		transition: color .2s;
+		&:hover {
+			color: $text-muted;
+		}
+	}
 }

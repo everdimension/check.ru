@@ -1,0 +1,11 @@
+.svg-icon {
+	display: inline-block;
+	width: 1.1em;
+	height: 1em;
+	fill: currentColor;
+}
+
+.search-icon {
+  position: relative;
+  bottom: .1em;
+}

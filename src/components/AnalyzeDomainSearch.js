@@ -25,11 +25,18 @@ class AnalyzeDomainSearch extends React.Component {
 			<div>
 				<form onSubmit={this.handleSubmit} noValidate>
 					<div className="InputGroup">
-						<input name="domainQuery"
-							type="text"
-							placeholder="Введите полное название домена"
-							required
-						/>
+						<div className="InputWrapper">
+							<input name="domainQuery"
+								type="text"
+								placeholder="Введите полное название домена"
+								required
+							/>
+							<button className="InputWrapper__icon-button">
+								<svg className="svg-icon search-icon">
+									<use xlinkHref="#icon-search" />
+								</svg>
+							</button>
+						</div>
 					</div>
 				</form>
 			</div>

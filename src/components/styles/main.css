@@ -3,6 +3,7 @@
 /*layout*/
 @import './layout/base.css';
 @import './layout/forms.css';
+@import './layout/icons.css';
 @import './layout/media.css';
 @import './layout/panels.css';
 @import './layout/scaffolding.css';
