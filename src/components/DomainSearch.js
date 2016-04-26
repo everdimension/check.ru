@@ -14,6 +14,17 @@ class DomainSearch extends React.Component {
 	constructor(props) {
 		super(props);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.focusTab = this.focusTab.bind(this);
+		this.unFocusTab = this.unFocusTab.bind(this);
+	}
+
+	focusTab() {
+		console.log('onFocus fn');
+		document.getElementById('whoisTab').classList.add('focused');
+	}
+
+	unFocusTab() {
+		document.getElementById('whoisTab').classList.remove('focused');
 	}
 
 	handleSubmit(evt) {
@@ -31,7 +42,13 @@ class DomainSearch extends React.Component {
 					<form onSubmit={this.handleSubmit} noValidate>
 						<div className="InputGroup">
 							<div className="InputWrapper">
-								<input type="text" name="domain" placeholder="http://yoursite.com" required />
+								<input type="text"
+									name="domain"
+									placeholder="http://yoursite.com"
+									onFocus={this.focusTab}
+									onBlur={this.unFocusTab}
+									required
+								/>
 								<button className="InputWrapper__icon-button">
 									<svg className="svg-icon search-icon">
 										<use xlinkHref="#icon-search" />

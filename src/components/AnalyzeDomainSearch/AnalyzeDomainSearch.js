@@ -10,7 +10,18 @@ class AnalyzeDomainSearch extends React.Component {
 	constructor(props) {
 		super(props);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.focusTab = this.focusTab.bind(this);
+		this.unFocusTab = this.unFocusTab.bind(this);
 	}
+
+	focusTab() {
+		document.getElementById('analyticsTab').classList.add('focused');
+	}
+
+	unFocusTab() {
+		document.getElementById('analyticsTab').classList.remove('focused');
+	}
+
 
 	handleSubmit(evt) {
 		evt.preventDefault();
@@ -29,6 +40,8 @@ class AnalyzeDomainSearch extends React.Component {
 							<input name="domainQuery"
 								type="text"
 								placeholder="Введите полное название домена"
+								onFocus={this.focusTab}
+								onBlur={this.unFocusTab}
 								required
 							/>
 							<button className="InputWrapper__icon-button">

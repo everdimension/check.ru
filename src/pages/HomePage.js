@@ -22,10 +22,16 @@ class HomePage extends React.Component {
 						<nav id="domainsNav">
 							<ul className="DomainsNav">
 								<li className="DomainsNav__item">
-									<IndexLink to="/" activeClassName="active">Whois</IndexLink>
+									<IndexLink to="/"
+										id="whoisTab"
+										activeClassName="active"
+									>Whois</IndexLink>
 								</li>
 								<li className="DomainsNav__item">
-									<Link to="/analytics" activeClassName="active">Анализ сайта</Link>
+									<Link to="/analytics"
+										activeClassName="active"
+										id="analyticsTab"
+									>Анализ сайта</Link>
 								</li>
 							</ul>
 						</nav>

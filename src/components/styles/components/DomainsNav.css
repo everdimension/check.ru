@@ -19,9 +19,14 @@
 			color: $text-default;
 			background-color: white;
 			text-decoration: none;
+			transition: border-color 0.25s ease-in-out;
 
 			&:hover, &.active {
 				color: $link-clr;
+			}
+
+			&.focused {
+				border-color: #8a8a8a;
 			}
 
 			&.active {
