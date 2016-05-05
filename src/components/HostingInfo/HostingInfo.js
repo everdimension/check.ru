@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import ShowMore from './ShowMore';
+import ShowMore from '../ShowMore';
 
 class HostingInfo extends React.Component {
 	static get propTypes() {

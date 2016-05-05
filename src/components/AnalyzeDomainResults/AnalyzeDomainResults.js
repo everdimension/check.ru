@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
-import PageSpeedInfo from './PageSpeedInfo';
-import HostingInfo from './HostingInfo';
+import PageSpeedInfo from '../PageSpeedInfo';
+import HostingInfo from '../HostingInfo';
 import cx from 'classnames';
 
 class AnalyzeDomainResults extends React.Component {

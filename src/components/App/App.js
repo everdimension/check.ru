@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
-import AnimatedBg from './AnimatedBg';
-import Logo from './Logo';
+import AnimatedBg from '../AnimatedBg';
+import Logo from '../Logo';
 import './App.css';
 
 class App extends React.Component {

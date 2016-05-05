@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import cx from 'classnames';
-import Collapse from './Collapse';
+import Collapse from '../Collapse';
 
 class PageSpeedInfo extends React.Component {
 	static get propTypes() {

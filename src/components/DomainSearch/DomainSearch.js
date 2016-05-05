@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
-import Alert from './Alert';
-import DomainsList from './DomainsList';
-import ProgressLine from './ProgressLine';
+import Alert from '../Alert';
+import DomainsList from '../DomainsList';
+import ProgressLine from '../ProgressLine';
 
 class DomainSearch extends React.Component {
 	static get propTypes() {

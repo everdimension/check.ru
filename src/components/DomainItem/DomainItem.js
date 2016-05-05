@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
-import Loader from './Loader';
-import ShowMore from './ShowMore';
+import Loader from '../Loader';
+import ShowMore from '../ShowMore';
 import cx from 'classnames';
 import './DomainItem.css';
 

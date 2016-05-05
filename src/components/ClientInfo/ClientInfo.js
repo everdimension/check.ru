@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import Loader from './Loader';
+import Loader from '../Loader';
 
 class ClientInfo extends React.Component {
 

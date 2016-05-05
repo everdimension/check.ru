@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import DomainItem from './DomainItem';
+import DomainItem from '../DomainItem';
 
 class DomainsList extends React.Component {
 	static get propTypes() {
