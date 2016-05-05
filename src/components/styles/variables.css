@@ -16,7 +16,9 @@ $padding-base-sm: 6px;
 
 $gap-base: $padding-base;
 
-$app-width-max: 800px;
+$app-width-max: 900px;
+
+$aside-width: 200px;
 
 /*foundation breakpoints*/
 $breakpoint-small: 0;

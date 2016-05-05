@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import ClientInfoContainer from '../containers/ClientInfoContainer';
+import AdContainer from '../components/AdContainer';
 import { Link, IndexLink } from 'react-router';
 
 class HomePage extends React.Component {
@@ -13,33 +14,40 @@ class HomePage extends React.Component {
 	render() {
 		return (
 			<div id="home">
-				<div className="row">
-					<div className="small-12 columns">
-						<ClientInfoContainer />
 
-						<br />
+				<aside className="AsideContent">
+					<AdContainer />
+				</aside>
 
-						<nav id="domainsNav">
-							<ul className="DomainsNav">
-								<li className="DomainsNav__item">
-									<IndexLink to="/"
-										id="whoisTab"
-										activeClassName="active"
-									>Whois</IndexLink>
-								</li>
-								<li className="DomainsNav__item">
-									<Link to="/analytics"
-										activeClassName="active"
-										id="analyticsTab"
-									>Анализ сайта</Link>
-								</li>
-							</ul>
-						</nav>
+				<main className="MainContent container">
+					<div className="row">
+						<div className="medium-12 columns">
+							<ClientInfoContainer />
 
-						{this.props.children}
+							<br />
+
+							<nav id="domainsNav">
+								<ul className="DomainsNav">
+									<li className="DomainsNav__item">
+										<IndexLink to="/"
+											id="whoisTab"
+											activeClassName="active"
+										>Whois</IndexLink>
+									</li>
+									<li className="DomainsNav__item">
+										<Link to="/analytics"
+											activeClassName="active"
+											id="analyticsTab"
+										>Анализ сайта</Link>
+									</li>
+								</ul>
+							</nav>
+
+							{this.props.children}
+						</div>
+
 					</div>
-
-				</div>
+				</main>
 
 				{/* <div className="row">
 					<div className="small-12 column">

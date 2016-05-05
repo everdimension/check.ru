@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import PageSpeedInfo from '../PageSpeedInfo';
 import HostingInfo from '../HostingInfo';
 import cx from 'classnames';
+import './AnalyzeDomainResults.css';
 
 class AnalyzeDomainResults extends React.Component {
 
@@ -24,15 +25,19 @@ class AnalyzeDomainResults extends React.Component {
 		return (
 			<div>
 				<div className="row">
-					<div className="small-4 columns">
+					<div className="Tile medium-4 columns">
 						<div className="thumb">
-							<img src={`data:${scrn.mime_type};base64,${scrn.data}`}
-								alt="site preview"
-							/>
+							<a href={`data:${scrn.mime_type};base64,${scrn.data}`}
+								target="_blank"
+							>
+								<img src={`data:${scrn.mime_type};base64,${scrn.data}`}
+									alt="site preview"
+								/>
+							</a>
 						</div>
 					</div>
 
-					<div className="small-8 columns">
+					<div className="Tile medium-8 columns">
 						<div className="panel InfoCard InfoCard--no-overflow">
 							<div className="panel__body">
 								<div className="InfoCard__heading">
@@ -49,10 +54,8 @@ class AnalyzeDomainResults extends React.Component {
 					</div>
 				</div>
 
-				<br />
-
 				<div className="row">
-					<div className="small-6 columns">
+					<div className="Tile medium-6 columns">
 						<div className="panel InfoCard InfoCard--no-overflow">
 							<div className="panel__body">
 								<div className="InfoCard__heading">
@@ -102,7 +105,7 @@ class AnalyzeDomainResults extends React.Component {
 						</div>
 					</div>
 
-					<div className="small-6 columns">
+					<div className="Tile medium-6 columns">
 						<div className="panel InfoCard InfoCard--no-overflow">
 							<div className="panel__body">
 								<div className="InfoCard__heading">
@@ -146,8 +149,6 @@ class AnalyzeDomainResults extends React.Component {
 						</div>
 					</div>
 				</div>
-
-				<br />
 
 				<div className="panel InfoCard InfoCard--no-overflow">
 					<div className="panel__body">

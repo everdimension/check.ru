@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import AnimatedBg from '../AnimatedBg';
 import Logo from '../Logo';
+import Footer from '../Footer';
 import './App.css';
 
 class App extends React.Component {
@@ -13,9 +14,9 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className="App">
-				<Logo />
+				<AnimatedBg />
 				<div className="content-wrapper row">
-					<AnimatedBg />
+					<Logo />
 					<header className="App__header">
 						{/* <div className="row">
 							<div className="small-4 columns">left column</div>
@@ -30,6 +31,8 @@ class App extends React.Component {
 					<div className="App__body">
 						{this.props.children}
 					</div>
+
+					<Footer />
 				</div>
 			</div>
 		);

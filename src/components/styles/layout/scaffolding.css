@@ -1,13 +1,13 @@
 .App {
 
-	max-width: 800px;
+	max-width: $app-width-max;
 
 	@media (min-width: $breakpoint-medium) {
-		margin: 50px auto 0;
+		margin: 50px auto 50px;
 	}
 
 	@media (min-width: $breakpoint-large) {
-		margin: 110px auto 0;
+		margin: 110px auto 110px;
 	}
 
 }
@@ -16,11 +16,7 @@
 	width: 100%;
 
 	padding: 20px;
-	padding-bottom: 80px;
 	background-color: $main-bg;
-	& {
-		max-width: 800px;
-	}
 
 }
 
@@ -32,5 +28,20 @@
 	&--full {
 		padding-left: 0;
 		padding-right: 0;
+	}
+}
+
+.MainContent {
+	@media (min-width: $breakpoint-medium) {
+		margin-right: $aside-width;
+	}
+}
+
+.AsideContent {
+	display: none;
+	@media (min-width: $breakpoint-medium) {
+		display: block;
+		float: right;
+		width: $aside-width;
 	}
 }

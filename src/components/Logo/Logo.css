@@ -1,7 +1,7 @@
 @import '../styles/variables';
 
 .Logo {
-	margin-top: calc($gap-base + 2px);
+	/*margin-top: calc($gap-base + 2px);*/
 	margin-bottom: calc($gap-base + 2px);
 	padding-left: $gap-base;
 	padding-right: $gap-base;
