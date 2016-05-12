@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import cx from 'classnames';
 import Collapse from '../Collapse';
+import RuleDetails from './RuleDetails';
 
 class PageSpeedInfo extends React.Component {
 	static get propTypes() {
@@ -29,10 +30,10 @@ class PageSpeedInfo extends React.Component {
 						{ruleResults[rule].ruleImpact ?
 							<Collapse>
 								<a href="#" className="ui-link">{ruleResults[rule].localizedRuleName}</a>
+								<RuleDetails name={rule} data={ruleResults[rule]} />
 								<p>Lorem ipspansum dolor sit amet.</p>
 							</Collapse> :
 							<span>{ruleResults[rule].localizedRuleName}</span>
-
 						}
 					</li>
 				);
