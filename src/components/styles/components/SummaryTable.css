@@ -5,7 +5,13 @@
 
 	/*height: 230px;*/
 	&__row {
-		margin-bottom: 15px;
+		margin-bottom: 5px;
+	}
+
+	&__label {
+		@media (min-width: $breakpoint-medium) {
+			text-align: right;
+		}
 	}
 
 	&__value {

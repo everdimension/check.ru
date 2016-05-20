@@ -20,13 +20,13 @@ class ClientInfo extends React.Component {
 					{this.props.data ?
 					<div className="SummaryTable SummaryTable--padded">
 						<div className="row SummaryTable__row">
-							<div className="medium-3 columns SummaryTable__label text-light text-thin">
+							<div className="medium-4 xlarge-3 columns SummaryTable__label text-light text-thin">
 								<span>
 									Ваш IP адрес
 								</span>
 
 							</div>
-							<div className="medium-9 columns">
+							<div className="medium-8 xlarge-9 columns">
 								<span className="SummaryTable__value SummaryTable__value--huge">
 									{data.ip}
 								</span>
@@ -35,49 +35,49 @@ class ClientInfo extends React.Component {
 						</div>
 
 						<div className="row SummaryTable__row">
-							<div className="medium-3 columns SummaryTable__label text-light text-thin">
+							<div className="medium-4 xlarge-3 columns SummaryTable__label text-light text-thin">
 								<span>
 									Имя компьютера
 								</span>
 
 							</div>
-							<div className="medium-9 columns">
+							<div className="medium-8 xlarge-9 columns">
 								{data.client_machine_name}
 							</div>
 						</div>
 
 						<div className="row SummaryTable__row">
-							<div className="medium-3 columns SummaryTable__label text-light text-thin">
+							<div className="medium-4 xlarge-3 columns SummaryTable__label text-light text-thin">
 								<span>
 									Операционная система
 								</span>
 
 							</div>
-							<div className="medium-9 columns">
+							<div className="medium-8 xlarge-9 columns">
 								{[data.os, data.os_version].join(' ')}
 							</div>
 						</div>
 
 						<div className="row SummaryTable__row">
-							<div className="medium-3 columns SummaryTable__label text-light text-thin">
+							<div className="medium-4 xlarge-3 columns SummaryTable__label text-light text-thin">
 								<span>
 									Ваш браузер
 								</span>
 
 							</div>
-							<div className="medium-9 columns">
+							<div className="medium-8 xlarge-9 columns">
 								<span>{[data.browser, data.browser_version].join(' ')}</span>
 							</div>
 						</div>
 
 						<div className="row SummaryTable__row">
-							<div className="medium-3 columns SummaryTable__label text-light text-thin">
+							<div className="medium-4 xlarge-3 columns SummaryTable__label text-light text-thin">
 								<span>
 									Местоположение
 								</span>
 
 							</div>
-							<div className="medium-9 columns">
+							<div className="medium-8 xlarge-9 columns">
 								{[data.city, data.country].join(', ')}
 
 								{ data.lat && <br /> }
