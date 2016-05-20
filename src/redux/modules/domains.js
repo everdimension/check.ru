@@ -3,6 +3,7 @@ import tlds from '../../tlds';
 
 export const ADD_DOMAIN     = 'ADD_DOMAIN';
 export const REQUEST_DOMAIN = 'REQUEST_DOMAIN';
+export const REQUEST_CANCEL = 'REQUEST_CANCEL';
 export const RECEIVE_DOMAIN = 'RECEIVE_DOMAIN';
 
 // Domain Reducer =============================
@@ -18,7 +19,13 @@ function domainReducer(state = initialDomainState, action) {
 		case REQUEST_DOMAIN:
 			return Object.assign({}, state, {
 				isFetching: true,
-				data: action.data
+				data: action.data,
+				request: action.request
+			});
+
+		case REQUEST_CANCEL:
+			return Object.assign({}, state, {
+				isFetching: false
 			});
 
 		case RECEIVE_DOMAIN: {
@@ -53,6 +60,7 @@ const initialState = {
 export default function domains(state = initialState, action) {
 	switch (action.type) {
 
+		case REQUEST_CANCEL:
 		case REQUEST_DOMAIN: {
 			const stateAfter = Object.assign({}, state, {
 				data: state.data.map(domain => {
@@ -101,6 +109,12 @@ export default function domains(state = initialState, action) {
 	return state;
 }
 
+// Selectors ================================
+// ========================================
+function getFetchingDomains(state) {
+	return state.domains.data.filter(domain => domain.isFetching);
+}
+
 
 // Actions ================================
 // ========================================
@@ -112,15 +126,22 @@ export function addDomain(domain) {
 	};
 }
 
-export function requestDomain(tld, query) {
+export function requestDomain(tld, query, request) {
 	return {
 		type: REQUEST_DOMAIN,
 		tld,
 		data: {
 			full_name: `${query}.${tld}`,
 			sld: query
-		}
+		},
+		request
+	};
+}
 
+export function cancelRequest(tld) {
+	return {
+		type: 'REQUEST_CANCEL',
+		tld
 	};
 }
 
@@ -140,9 +161,18 @@ export function fetchDomain(tld, query) {
 				dispatch(addDomain(domain));
 			}
 		}
-		dispatch(requestDomain(tld, query));
 
-		return Domains.query(tld, query)
+		// abort if same domain is currently being fetched
+		const pendingDomain = getFetchingDomains(getState()).find(d => d.tld === tld);
+		if (pendingDomain) {
+			pendingDomain.request.abort();
+			dispatch(cancelRequest(tld));
+		}
+
+		const request = Domains.query(tld, query);
+		dispatch(requestDomain(tld, query, request));
+
+		return request
 			.then(res => dispatch(receiveDomain(tld, res)))
 			.catch(err => {
 				dispatch(receiveDomain(tld, null, true));

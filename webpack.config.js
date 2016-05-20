@@ -93,9 +93,9 @@ var plugins = [
 		__AD_SLOT_NUMBER__: JSON.stringify(process.env.AD_SLOT_NUMBER),
 	}),
 	new HtmlWebpackPlugin(htmlWebpackPluginConfig),
-	new webpack.ProvidePlugin({
-		'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
-	}),
+	// new webpack.ProvidePlugin({
+	// 	'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+	// }),
 	new SvgStore(path.join(paths.src, 'svg', '**/*.svg'), 'svg', {
 		name: '[hash].sprite.svg',
 		chunk: 'app'
@@ -132,6 +132,7 @@ module.exports = {
 		contentBase: paths.dist,
 		publicPath: '/',
 		hot: true,
+		stats: 'errors-only',
 		proxy: {
 			'/api/*': {
 				// target: 'http://127.0.0.1:4300'

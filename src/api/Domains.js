@@ -1,12 +1,8 @@
-import jsonResponseHandler from './jsonResponseHandler';
+import request from '../core/request';
 
 class DomainsResource {
 	query(tld, q) {
-		return fetch(`api/v1/domain/${tld}?name=${q}`)
-			.then(jsonResponseHandler)
-			.catch(err => {
-				throw err;
-			});
+		return request(`api/v1/domain/${tld}?name=${q}`);
 	}
 }
 

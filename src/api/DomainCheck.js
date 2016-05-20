@@ -1,9 +1,8 @@
-import jsonResponseHandler from './jsonResponseHandler';
+import request from '../core/request';
 
 class DomainCheckResource {
 	get(q) {
-		return fetch(`api/v1/check?name=${q}`)
-			.then(jsonResponseHandler)
+		return request(`api/v1/check?name=${q}`)
 			.catch(err => {
 				throw err;
 			});

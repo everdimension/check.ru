@@ -1,9 +1,9 @@
-import jsonResponseHandler from './jsonResponseHandler';
+import request from '../core/request';
 
 class IpInfoClass {
 	get() {
-		return fetch('api/v1/info')
-			.then(jsonResponseHandler)
+		console.log('using REQUEST');
+		return request('api/v1/info')
 			.catch(err => {
 				throw err;
 			});
