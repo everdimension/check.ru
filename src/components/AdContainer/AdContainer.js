@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { PropTypes as t } from 'react';
 
 class AdContainer extends React.Component {
+	static get propTypes() {
+		return {
+			children: t.element.isRequired
+		};
+	}
+
 	render() {
 		return (
 			<div className="text-center">
-				<img src="http://placehold.it/200x600" alt="" />
+				{this.props.children}
 			</div>
 		);
 	}

@@ -1,12 +1,24 @@
+var fs                     = require('fs');
 var webpack                = require('webpack');
 var SvgStore               = require('webpack-svgstore-plugin');
 var HtmlWebpackPlugin      = require('html-webpack-plugin');
 var path                   = require('path');
 var postcssImport          = require('postcss-import');
 var postcssLoaders         = require('./tools/postcssLoaders');
+var fileExists             = require('./tools/fileExists');
 var isProduction           = process.env.NODE_ENV === 'production';
 var isDevelopment          = !isProduction;
 var PORT                   = 8070;
+
+var envExists = fileExists('./.env');
+if (!envExists) { console.warn('.env file not found'); }
+if (isProduction) {
+	if (!envExists) { process.exit(1); }
+	require('dotenv').config();
+} else {
+	if (!envExists) { console.warn('falling back to .env_sample'); }
+	require('dotenv').config(envExists ? {} : { path: './.env_sample' });
+}
 
 var paths = {
 	src: path.join(__dirname, '/src'),
@@ -70,9 +82,16 @@ if (isProduction) {
 		trackingId: 'UA-XXXXXXPP-X',
 		pageViewOnLoad: true
 	};
+} else {
+	// DEVELOPMENT
+	htmlWebpackPluginConfig.development = true;
 }
 
 var plugins = [
+	new webpack.DefinePlugin({
+		__AD_CLIENT_KEY__: JSON.stringify(process.env.AD_CLIENT_KEY),
+		__AD_SLOT_NUMBER__: JSON.stringify(process.env.AD_SLOT_NUMBER),
+	}),
 	new HtmlWebpackPlugin(htmlWebpackPluginConfig),
 	new webpack.ProvidePlugin({
 		'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'

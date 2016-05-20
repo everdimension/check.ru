@@ -30,6 +30,12 @@
 
 		<div id="app"></div>
 
+		<% if (htmlWebpackPlugin.options.development) { %>
+			<script>
+				google_adtest = 'on';
+			</script>
+		<% } %>
+
 		<% if (htmlWebpackPlugin.options.googleAnalytics) { %>
 		<script>
 			(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

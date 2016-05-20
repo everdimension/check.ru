@@ -1,7 +1,11 @@
 import React, { PropTypes } from 'react';
 import ClientInfoContainer from '../containers/ClientInfoContainer';
 import AdContainer from '../components/AdContainer';
+import GoogleAd from '../components/GoogleAd';
 import { Link, IndexLink } from 'react-router';
+
+const adClientKey = __AD_CLIENT_KEY__; // eslint-disable-line no-undef
+const adSlotNumber = __AD_SLOT_NUMBER__; // eslint-disable-line no-undef
 
 class HomePage extends React.Component {
 
@@ -16,7 +20,14 @@ class HomePage extends React.Component {
 			<div id="home">
 
 				<aside className="AsideContent">
-					<AdContainer />
+					<AdContainer>
+						<GoogleAd
+							adClientKey={adClientKey}
+							adSlotNumber={adSlotNumber}
+							width="160px"
+							height="600px"
+						/>
+					</AdContainer>
 				</aside>
 
 				<main className="MainContent container">

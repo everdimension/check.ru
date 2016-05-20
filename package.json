@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server",
     "serve": "npm start",
-    "build": "NODE_ENV=production webpack -p",
+    "build": "NODE_ENV=development webpack",
+    "build:prod": "NODE_ENV=production webpack -p",
     "lint": "eslint --ext .js src/**",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -27,6 +28,7 @@
     "babel-preset-stage-0": "6.5.0",
     "classnames": "2.2.3",
     "css-loader": "0.23.1",
+    "dotenv": "2.0.0",
     "exports-loader": "0.6.2",
     "file-loader": "0.8.5",
     "foundation-sites": "6.1.1",
