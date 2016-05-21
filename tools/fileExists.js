@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 module.exports = function(path) {
   let fileExists = true;
   try {

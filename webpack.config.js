@@ -1,4 +1,3 @@
-var fs                     = require('fs');
 var webpack                = require('webpack');
 var SvgStore               = require('webpack-svgstore-plugin');
 var HtmlWebpackPlugin      = require('html-webpack-plugin');
