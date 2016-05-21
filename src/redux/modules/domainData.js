@@ -16,6 +16,7 @@ export default function (state = initialState, action) {
 	switch (action.type) {
 		case REQUEST_DOMAIN_CHECK:
 			return Object.assign({}, state, {
+				request: action.request,
 				isFetching: true
 			});
 		case RECEIVE_DOMAIN_CHECK:
@@ -31,9 +32,10 @@ export default function (state = initialState, action) {
 
 // Actions
 // ============================================
-export function requestDomainCheck() {
+export function requestDomainCheck(request) {
 	return {
-		type: REQUEST_DOMAIN_CHECK
+		type: REQUEST_DOMAIN_CHECK,
+		request
 	};
 }
 
@@ -46,10 +48,16 @@ export function receiveDomainCheck(data, error) {
 }
 
 export function fetchDomainCheck(query) {
-	return dispatch => {
-		dispatch(requestDomainCheck());
+	return (dispatch, getState) => {
+		const { domainData } = getState();
+		if (domainData.isFetching) {
+			domainData.request.abort();
+		}
 
-		return DomainCheck.get(query)
+		const request = DomainCheck.get(query);
+		dispatch(requestDomainCheck(request));
+
+		return request
 			.then(res => dispatch(receiveDomainCheck(res)))
 			.catch(err => {
 				console.error('err', err);

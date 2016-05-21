@@ -111,7 +111,7 @@ export default function domains(state = initialState, action) {
 
 // Selectors ================================
 // ========================================
-function getFetchingDomains(state) {
+function getPendingDomains(state) {
 	return state.domains.data.filter(domain => domain.isFetching);
 }
 
@@ -156,14 +156,15 @@ export function receiveDomain(tld, data, error) {
 
 export function fetchDomain(tld, query) {
 	return (dispatch, getState) => {
-		if (!getState().domains.populated) {
+		const currentState = getState();
+		if (!currentState.domains.populated) {
 			for (const domain of tlds) {
 				dispatch(addDomain(domain));
 			}
 		}
 
 		// abort if same domain is currently being fetched
-		const pendingDomain = getFetchingDomains(getState()).find(d => d.tld === tld);
+		const pendingDomain = getPendingDomains(currentState).find(d => d.tld === tld);
 		if (pendingDomain) {
 			pendingDomain.request.abort();
 			dispatch(cancelRequest(tld));

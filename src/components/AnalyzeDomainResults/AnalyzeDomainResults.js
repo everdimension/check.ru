@@ -42,6 +42,7 @@ class AnalyzeDomainResults extends React.Component {
 							<div className="panel__body">
 								<div className="InfoCard__heading">
 									<img src={http.favicon} alt="domain favicon" />
+									{' '}
 									{whois.regrinfo.domain.name}
 								</div>
 

@@ -2,10 +2,7 @@ import request from '../core/request';
 
 class DomainCheckResource {
 	get(q) {
-		return request(`api/v1/check?name=${q}`)
-			.catch(err => {
-				throw err;
-			});
+		return request(`api/v1/check?name=${q}`);
 	}
 }
 
