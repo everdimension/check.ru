@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import AnimatedBg from '../AnimatedBg';
 import Logo from '../Logo';
 import Footer from '../Footer';
+import YandexShare from '../YandexShare';
 import './App.css';
 
 class App extends React.Component {
@@ -16,8 +17,9 @@ class App extends React.Component {
 			<div className="App">
 				<AnimatedBg />
 				<div className="content-wrapper row">
-					<Logo />
-					<header className="App__header">
+					<header className="App__header container">
+						<Logo />
+						<YandexShare />
 						{/* <div className="row">
 							<div className="small-4 columns">left column</div>
 							<div className="small-4 columns">

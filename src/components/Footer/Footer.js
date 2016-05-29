@@ -1,5 +1,6 @@
 import React from 'react';
 import './Footer.css';
+import Tooltip from '../Tooltip';
 
 class Footer extends React.Component {
 	render() {
@@ -19,7 +20,13 @@ class Footer extends React.Component {
 				<div className="Footer__item Footer__contacts">
 					<p>
 						<a href="#">
-							Ваш домен ранее обслуживался на check.ru?
+							<Tooltip
+								title="С 15.08.2015 обслуживание доменов производится на сайте http://dnar.ru. Логин и пароль от ваших личных кабинетов остались прежними."
+								position="top"
+							>
+								<span>Ваш домен ранее обслуживался на check.ru?</span>
+							</Tooltip>
+
 						</a>
 					</p>
 					<p>

@@ -15,16 +15,16 @@
 .content-wrapper {
 	width: 100%;
 
-	padding: 20px;
+	padding: 20px 30px;
 	background-color: $main-bg;
 
 }
 
 .container {
-	max-width: 800px;
+	// max-width: 800px;
 	margin: 0 auto;
-	padding-left: 15px;
-	padding-right: 15px;
+	// padding-left: 15px;
+	// padding-right: 15px;
 	&--full {
 		padding-left: 0;
 		padding-right: 0;
@@ -32,6 +32,7 @@
 }
 
 .MainContent {
+	padding-right: 15px;
 	@media (min-width: $breakpoint-medium) {
 		margin-right: $aside-width;
 	}

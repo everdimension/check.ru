@@ -22,7 +22,6 @@ class DomainSearch extends React.Component {
 	}
 
 	focusTab() {
-		console.log('onFocus fn');
 		document.getElementById('whoisTab').classList.add('focused');
 	}
 

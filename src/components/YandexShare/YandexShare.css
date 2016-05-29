@@ -1,0 +1,9 @@
+.YandexShare {
+  &.b-share_theme_counter {
+    .b-share_type_small {
+      .b-share__link {
+        border-radius: 0;
+      }
+    }
+  }
+}
