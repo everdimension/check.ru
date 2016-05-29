@@ -90,6 +90,7 @@ var plugins = [
 	new webpack.DefinePlugin({
 		__AD_CLIENT_KEY__: JSON.stringify(process.env.AD_CLIENT_KEY),
 		__AD_SLOT_NUMBER__: JSON.stringify(process.env.AD_SLOT_NUMBER),
+		__DEV__: isDevelopment,
 	}),
 	new HtmlWebpackPlugin(htmlWebpackPluginConfig),
 	// new webpack.ProvidePlugin({

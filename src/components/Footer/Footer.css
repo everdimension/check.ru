@@ -1,40 +1,54 @@
 @import '../styles/variables';
 
 .Footer {
-  margin-top: 20px;
-  border-top: 1px solid $app-border-clr-light;
-  padding-top: 15px;
-  text-align: center;
+	margin-top: 20px;
+	border-top: 1px solid $app-border-clr-light;
+	padding-top: 15px;
+	text-align: center;
 
-  @media (min-width: $breakpoint-medium) {
-    display: flex;
-    justify-content: space-between;
-    text-align: left;
-  }
+	a {
+		color: black;
+		&:visited {
+			color: color($link-clr saturation(130%));
+		}
+		&:active, &:focus {
+			color: color($link-clr lightness(35%));
+		}
+		&:hover, &:focus {
+			color: $link-clr;
+			text-decoration: none;
+		}
+	}
 
-  &__item {
-    & + & {
-      margin-top: 15px;
-      
-      @media (min-width: $breakpoint-medium) {
-        margin-top: 0;
-      }
-    }
-  }
+	@media (min-width: $breakpoint-medium) {
+		display: flex;
+		justify-content: space-between;
+		text-align: left;
+	}
 
-  &__copyright {
+	&__item {
+		& + & {
+			margin-top: 15px;
 
-  }
+			@media (min-width: $breakpoint-medium) {
+				margin-top: 0;
+			}
+		}
+	}
 
-  &__contacts {
-    p {
-      margin: 0;
-    }
-  }
+	&__copyright {
+
+	}
+
+	&__contacts {
+		p {
+			margin: 0;
+		}
+	}
 }
 
 .Copyright {
-  &__line {
-    margin: 0;
-  }
+	&__line {
+		margin: 0;
+	}
 }

@@ -1,5 +1,11 @@
 import React, { PropTypes } from 'react';
-import { fetchDomain } from '../redux/modules/domains';
+import {
+	fetchDomain,
+	addDomain,
+	populateStandardDomainsIfNeeded,
+	setDefaultTlds,
+	setTldsToShow
+} from '../redux/modules/domains';
 import DomainSearch from '../components/DomainSearch';
 import tlds from '../tlds';
 
@@ -16,14 +22,40 @@ class DomainsContainer extends React.Component {
 		this.state = this.store.getState();
 
 		this.queryDomains = this.queryDomains.bind(this);
+		this.onSetDefaultTlds = this.onSetDefaultTlds.bind(this);
+		this.onSetTldsToShow = this.onSetTldsToShow.bind(this);
 	}
 
 	componentWillMount() {
-		this.unsubscribe = this.store.subscribe(() => this.setState(this.store.getState()));
+		this.unsubscribe = this.store.subscribe(
+			() => this.setState(this.store.getState())
+		);
+		this.store.dispatch(
+			populateStandardDomainsIfNeeded()
+		);
 	}
 
 	componentWillUnmount() {
 		this.unsubscribe();
+	}
+
+	onSetDefaultTlds() {
+		this.store.dispatch(
+			setDefaultTlds()
+		);
+	}
+
+	onSetTldsToShow(tldsToShow) {
+		tldsToShow.forEach(tldName => {
+			if (!this.store.getState().domains.data.find(d => d.tld === tldName)) {
+				this.store.dispatch(
+					addDomain({ tld: tldName })
+				);
+			}
+		});
+		this.store.dispatch(
+			setTldsToShow(tldsToShow)
+		);
 	}
 
 	queryDomains(domainName, tld) {
@@ -44,6 +76,8 @@ class DomainsContainer extends React.Component {
 			<DomainSearch
 				domains={this.state.domains}
 				onSearch={this.queryDomains}
+				onSetDefaultTlds={this.onSetDefaultTlds}
+				onSetTldsToShow={this.onSetTldsToShow}
 			/>
 		);
 	}

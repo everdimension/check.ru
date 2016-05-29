@@ -7,7 +7,7 @@
 	}
 
 	@media (min-width: $breakpoint-large) {
-		margin: 110px auto 110px;
+		margin: 100px auto 50px;
 	}
 
 }

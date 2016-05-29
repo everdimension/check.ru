@@ -2,11 +2,14 @@ import React, { PropTypes } from 'react';
 import Alert from '../Alert';
 import DomainsList from '../DomainsList';
 import ProgressLine from '../ProgressLine';
+import extractDomain from '../../utils/extractDomain';
 
 class DomainSearch extends React.Component {
 	static get propTypes() {
 		return {
 			domains: PropTypes.object.isRequired,
+			onSetDefaultTlds: PropTypes.func.isRequired,
+			onSetTldsToShow: PropTypes.func.isRequired,
 			onSearch: PropTypes.func
 		};
 	}
@@ -27,15 +30,26 @@ class DomainSearch extends React.Component {
 		document.getElementById('whoisTab').classList.remove('focused');
 	}
 
-	handleSubmit(evt) {
-		evt.preventDefault();
-		if (evt.target.checkValidity()) {
-			this.props.onSearch(evt.target.elements.domain.value);
+	handleSubmit(eve) {
+		eve.preventDefault();
+		if (eve.target.checkValidity()) {
+			const domainNode = eve.target.elements.domain;
+			const { completeName, sld, tld } = extractDomain(domainNode.value);
+			domainNode.value = completeName;
+			if (tld) {
+				this.props.onSetTldsToShow([tld]);
+			} else {
+				this.props.onSetDefaultTlds();
+			}
+			this.props.onSearch(sld, tld);
 		}
 	}
 
 	render() {
 		const { domains } = this.props;
+		const domainsToShow = domains.tldsToShow.map(
+			t => domains.data.find(domain => domain.tld === t)
+		);
 		return (
 			<div>
 				<div className="DomainSearch__search">
@@ -72,11 +86,7 @@ class DomainSearch extends React.Component {
 						</Alert>
 					}
 					{ !!domains.data.length &&
-						<div className="panel">
-							<div className="panel__body">
-								<DomainsList domains={domains.data} fetchDomain={this.props.onSearch} />
-							</div>
-						</div>
+						<DomainsList domains={domainsToShow} fetchDomain={this.props.onSearch} />
 					}
 				</div>
 

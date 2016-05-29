@@ -52,7 +52,7 @@ class DomainItem extends React.Component {
 					</i>
 				</li>
 
-			:
+			: domain.fetched ?
 				<li key={domain.tld} className={cx(listClass, 'DomainItem')}>
 					{!domain.data.available &&
 						<ShowMore
@@ -88,7 +88,7 @@ class DomainItem extends React.Component {
 						{domain.data.details.raw}
 					</pre>
 
-				</li>
+				</li> : null
 		);
 	}
 }

@@ -5,19 +5,25 @@ export const ADD_DOMAIN     = 'ADD_DOMAIN';
 export const REQUEST_DOMAIN = 'REQUEST_DOMAIN';
 export const REQUEST_CANCEL = 'REQUEST_CANCEL';
 export const RECEIVE_DOMAIN = 'RECEIVE_DOMAIN';
+export const CLEAR_DOMAINS  = 'CLEAR_DOMAINS';
+export const TOGGLE_SINGLE_DOMAIN  = 'TOGGLE_SINGLE_DOMAIN';
+export const SET_TLDS_TO_SHOW  = 'SET_TLDS_TO_SHOW';
 
 // Domain Reducer =============================
 // ============================================
 const initialDomainState = {
 	tld: '',
 	isFetching: false,
+	fetched: false,
 	data: null
 };
 
 function domainReducer(state = initialDomainState, action) {
+	console.log('reducing domain', action);
 	switch (action.type) {
 		case REQUEST_DOMAIN:
 			return Object.assign({}, state, {
+				fetched: false,
 				isFetching: true,
 				data: action.data,
 				request: action.request
@@ -31,19 +37,26 @@ function domainReducer(state = initialDomainState, action) {
 		case RECEIVE_DOMAIN: {
 			const newState = Object.assign({}, state, {
 				isFetching: false,
+				fetched: true,
 				data: action.data || state.data,
 				error: action.error
 			});
 			return newState;
 		}
 
+		case CLEAR_DOMAINS:
+			return Object.assign({}, state, {
+				tld: action.tld,
+				price: action.price
+			});
+
 		case ADD_DOMAIN:
-			return {
+			return Object.assign({}, state, {
 				tld: action.domain.tld,
 				price: action.domain.price,
-				isFetching: action.domain.isFetching || false,
-				data: action.domain.data || null
-			};
+				isFetching: action.domain.isFetching || state.isFetching,
+				data: action.domain.data || state.data
+			});
 	}
 
 	return state;
@@ -53,6 +66,8 @@ function domainReducer(state = initialDomainState, action) {
 // =============================================
 const initialState = {
 	data: [],
+	showSingleDomain: false,
+	tldsToShow: [],
 	isFetching: false,
 	fetchProgress: 0,
 	populated: false
@@ -97,10 +112,33 @@ export default function domains(state = initialState, action) {
 			});
 		}
 
+		case CLEAR_DOMAINS:
+			return Object.assign({}, state, {
+				data: state.data.map(
+					domain => domainReducer(undefined, {
+						type: action.type,
+						tld: domain.tld,
+						price: domain.price
+					})
+				)
+			});
+
 		case ADD_DOMAIN: {
 			return Object.assign({}, state, {
-				data: [...state.data, domainReducer(null, action)],
+				data: [...state.data, domainReducer(undefined, action)],
 				populated: true
+			});
+		}
+
+		case SET_TLDS_TO_SHOW: {
+			return Object.assign({}, state, {
+				tldsToShow: action.tldsToShow
+			});
+		}
+
+		case TOGGLE_SINGLE_DOMAIN: {
+			return Object.assign({}, state, {
+				showSingleDomain: action.showSingleDomain
 			});
 		}
 
@@ -110,11 +148,10 @@ export default function domains(state = initialState, action) {
 }
 
 // Selectors ================================
-// ========================================
+// ==========================================
 function getPendingDomains(state) {
 	return state.domains.data.filter(domain => domain.isFetching);
 }
-
 
 // Actions ================================
 // ========================================
@@ -154,14 +191,45 @@ export function receiveDomain(tld, data, error) {
 	};
 }
 
-export function fetchDomain(tld, query) {
-	return (dispatch, getState) => {
-		const currentState = getState();
-		if (!currentState.domains.populated) {
+export function clearDomains() {
+	return { type: CLEAR_DOMAINS };
+}
+
+export function showSingleDomain(bool) {
+	return {
+		type: TOGGLE_SINGLE_DOMAIN,
+		showSingleDomain: bool
+	};
+}
+
+export function populateStandardDomainsIfNeeded() {
+	return (dispatch, currentState) => {
+		console.log('currentState', currentState());
+		if (!currentState().domains.populated) {
+			console.log('not populated');
 			for (const domain of tlds) {
 				dispatch(addDomain(domain));
 			}
 		}
+	};
+}
+
+export function setTldsToShow(tldsToShow) {
+	return {
+		type: SET_TLDS_TO_SHOW,
+		tldsToShow
+	};
+}
+
+export function setDefaultTlds() {
+	return dispatch => dispatch(
+		setTldsToShow(tlds.map(t => t.tld))
+	);
+}
+
+export function fetchDomain(tld, query) {
+	return (dispatch, getState) => {
+		const currentState = getState();
 
 		// abort if same domain is currently being fetched
 		const pendingDomain = getPendingDomains(currentState).find(d => d.tld === tld);
@@ -177,7 +245,6 @@ export function fetchDomain(tld, query) {
 			.then(res => dispatch(receiveDomain(tld, res)))
 			.catch(err => {
 				dispatch(receiveDomain(tld, null, true));
-				// return err;
 				throw err;
 			});
 	};

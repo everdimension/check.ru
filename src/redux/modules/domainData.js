@@ -12,7 +12,6 @@ const initialState = {
 };
 
 export default function (state = initialState, action) {
-	console.log('reducing...', action);
 	switch (action.type) {
 		case REQUEST_DOMAIN_CHECK:
 			return Object.assign({}, state, {
