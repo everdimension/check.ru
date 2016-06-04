@@ -14,6 +14,18 @@ const tlds = [
 	{
 		tld: 'net',
 		price: 123
+	},
+	{
+		tld: 'su',
+		price: 150
+	},
+	{
+		tld: 'me',
+		price: 2780
+	},
+	{
+		tld: 'info',
+		price: 1170
 	}
 ];
 

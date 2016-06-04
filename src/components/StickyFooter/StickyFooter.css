@@ -1,0 +1,9 @@
+.StickyFooter {
+	position: absolute;
+	bottom: 0;
+	margin-right: 15px;
+
+	&__wrapper {
+		position: relative;
+	}
+}

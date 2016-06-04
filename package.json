@@ -34,6 +34,7 @@
     "html-webpack-plugin": "2.8.1",
     "immutable": "3.7.6",
     "imports-loader": "0.6.5",
+    "lodash": "4.13.1",
     "node-sass": "3.7.0",
     "normalize.css": "3.0.3",
     "postcss-calc": "5.2.0",

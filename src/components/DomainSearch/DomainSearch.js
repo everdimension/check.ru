@@ -3,6 +3,7 @@ import Alert from '../Alert';
 import DomainsList from '../DomainsList';
 import ProgressLine from '../ProgressLine';
 import extractDomain from '../../utils/extractDomain';
+import './DomainSearch.css';
 
 class DomainSearch extends React.Component {
 	static get propTypes() {

@@ -32,8 +32,8 @@
 }
 
 .MainContent {
-	padding-right: 15px;
 	@media (min-width: $breakpoint-medium) {
+		padding-right: 15px;
 		margin-right: $aside-width;
 	}
 }

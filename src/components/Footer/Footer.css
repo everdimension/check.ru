@@ -7,11 +7,11 @@
 	text-align: center;
 
 	a {
-		color: black;
-		&:visited {
-			color: color($link-clr saturation(130%));
+		&, &:visited {
+			color: black;
 		}
-		&:active, &:focus {
+
+		&:active {
 			color: color($link-clr lightness(35%));
 		}
 		&:hover, &:focus {

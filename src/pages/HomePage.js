@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import ClientInfoContainer from '../containers/ClientInfoContainer';
 import AdContainer from '../components/AdContainer';
 import GoogleAd from '../components/GoogleAd';
+import StickyFooter from '../components/StickyFooter';
 import { Link, IndexLink } from 'react-router';
 
 const adClientKey = __AD_CLIENT_KEY__; // eslint-disable-line no-undef
@@ -31,11 +32,10 @@ class HomePage extends React.Component {
 				</aside>
 
 				<main className="MainContent container">
-					<div className="row">
-						<div className="medium-12 columns">
-							<ClientInfoContainer />
+					<div className="row" id="copyrightFooterWrapper">
+						<div className="medium-12 columns" id="copyrightFooterContent">
 
-							<br />
+							<ClientInfoContainer />
 
 							<nav id="domainsNav">
 								<ul className="DomainsNav">
@@ -55,6 +55,17 @@ class HomePage extends React.Component {
 							</nav>
 
 							{this.props.children}
+
+							<StickyFooter wrapperId="copyrightFooterWrapper" contentId="copyrightFooterContent">
+								<div className="panel">
+									<div className="panel__body">
+										Enter LTD &mdash; старейший регистратор доменных имён в
+										Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+										Nostrum sed, recusandae veritatis mollitia eos
+										exercitationem corrupti doloremque qui unde alias?
+									</div>
+								</div>
+							</StickyFooter>
 						</div>
 
 					</div>

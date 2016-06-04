@@ -32,7 +32,7 @@ class GoogleAd extends React.Component {
 	render() {
 		const { adClientKey, adSlotNumber, width, height } = this.props;
 		if (__DEV__) { // eslint-disable-line no-undef
-			return <img src="http://placehold.it/160x600" alt="" />;
+			return <img src="http://placehold.it/160x600" alt="" style={{ display: 'block' }} />;
 		}
 
 		return (
