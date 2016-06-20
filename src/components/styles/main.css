@@ -14,5 +14,6 @@
 /*components*/
 @import './components/DomainsNav.css';
 @import './components/InfoCard.css';
-@import './components/SummaryTable.css';
 @import './components/List.css';
+@import './components/SummaryTable.css';
+@import './components/Tooltip.css';

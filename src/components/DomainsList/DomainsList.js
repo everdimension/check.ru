@@ -11,6 +11,7 @@ class DomainsList extends React.Component {
 
 	render() {
 		const { domains } = this.props;
+		const oneResult = domains.length === 1;
 		return (
 			<ul className="List List--unstyled List--md">
 				{domains.map(domain => (
@@ -18,6 +19,7 @@ class DomainsList extends React.Component {
 						key={domain.tld}
 						domain={domain}
 						refetch={this.props.fetchDomain}
+						expanded={oneResult}
 					/>
 				))}
 			</ul>

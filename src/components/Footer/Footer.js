@@ -6,7 +6,7 @@ import LiveInternetCounter from '../LiveInternetCounter';
 class Footer extends React.Component {
 	render() {
 		const tooltipContent = (
-			<span>
+			<span className="Tooltip__content">
 				С 15.08.2015 обслуживание доменов производится на сайте
 				{' '}
 				<a href="http://dnar.ru" target="_blank">http://dnar.ru</a>.
@@ -21,12 +21,12 @@ class Footer extends React.Component {
 					<p className="text-light Copyright__line">
 						&copy; {`1996–${new Date().getFullYear()}`} Check.ru
 					</p>
-					<p className="Copyright__line">Проект GEM</p>
+					<p className="Copyright__line"><a href="http://www.gemagency.ru/" target="_blank">Проект GEM</a></p>
 				</div>
 
 				<div className="Footer__item Footer__tracker">
-					<a href="http://top100.rambler.ru/navi/3074083/" rel="nofollow" target="_blank">
-						<img src="http://counter.rambler.ru/top100.cnt?3074083" alt="Rambler's Top100" border="0" />
+					<a href="http://top100.rambler.ru/home?id=1992171" rel="nofollow" target="_blank">
+						<img src="http://counter.rambler.ru/top100.cnt?1992171" alt="Rambler's Top100" border="0" />
 					</a>
 					{' '}
 					<LiveInternetCounter />
@@ -46,7 +46,7 @@ class Footer extends React.Component {
 						</a>
 					</p>
 					<p>
-						<a href="maito:hello@check.ru">hello@check.ru</a>
+						<a href="mailto:hello@check.ru">hello@check.ru</a>
 					</p>
 				</div>
 			</footer>

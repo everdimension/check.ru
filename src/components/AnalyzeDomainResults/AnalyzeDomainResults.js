@@ -93,11 +93,6 @@ class AnalyzeDomainResults extends React.Component {
 													{item.target}
 												</li>
 											))}
-											<li>ASPMX2.GOOGLEMAIL.COM</li>
-											<li>ASPMX3.GOOGLEMAIL.COM</li>
-											<li>ASPMX.L.GOOGLE.COM</li>
-											<li>ALT1.ASPMX.L.GOOGLE.COM</li>
-											<li>ALT2.ASPMX.L.GOOGLE.COM</li>
 										</ul>
 									</li>
 

@@ -9,7 +9,8 @@ class DomainItem extends React.Component {
 		return {
 			domain: PropTypes.object,
 			refetch: PropTypes.func,
-			className: PropTypes.string
+			className: PropTypes.string,
+			expanded: PropTypes.bool
 		};
 	}
 
@@ -56,9 +57,10 @@ class DomainItem extends React.Component {
 				<li key={domain.tld} className={cx(listClass, 'DomainItem')}>
 					{!domain.data.available &&
 						<ShowMore
+							className="DomainItem__right"
 							text="Подробнее"
 							target={`raw_${domain.tld}`}
-							className="DomainItem__right"
+							expanded={this.props.expanded}
 						/>
 					}
 

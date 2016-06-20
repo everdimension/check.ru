@@ -19,7 +19,7 @@ class HostingInfo extends React.Component {
 							Регистратор
 						</div>
 						<div className="small-8 columns">
-							{whois.regyinfo.registrar || ''}
+							{whois.regrinfo.domain.sponsor || ''}
 						</div>
 					</div>
 					<div className="row SummaryTable__row">
