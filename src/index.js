@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import 'normalize.css/normalize.css';
 require('./components/styles/foundation.scss');
 

@@ -5,7 +5,8 @@ var path                   = require('path');
 var postcssImport          = require('postcss-import');
 var postcssLoaders         = require('./tools/postcssLoaders');
 var fileExists             = require('./tools/fileExists');
-var isProduction           = process.env.NODE_ENV === 'production';
+const nodeEnv              = process.env.NODE_ENV || 'development';
+var isProduction           = nodeEnv === 'production';
 var isDevelopment          = !isProduction;
 var PORT                   = 8070;
 
@@ -88,6 +89,7 @@ if (isProduction) {
 
 var plugins = [
 	new webpack.DefinePlugin({
+		'process.env.NODE_ENV': JSON.stringify(nodeEnv),
 		__AD_CLIENT_KEY__: JSON.stringify(process.env.AD_CLIENT_KEY),
 		__AD_SLOT_NUMBER__: JSON.stringify(process.env.AD_SLOT_NUMBER),
 		__DEV__: isDevelopment,
@@ -135,10 +137,11 @@ module.exports = {
 		stats: 'errors-only',
 		proxy: {
 			'/api/*': {
-				// target: 'http://127.0.0.1:4300'
-				target: 'http://127.0.0.1:8888/checkru_server/public'
+				// target: 'http://127.0.0.1:4300',
+				target: 'http://127.0.0.1:8888/checkru_server/public',
+				// target: 'http://new.check.ru/api',
 				// secure: false,
-				// changeOrigin: true
+				// changeOrigin: true,
 			}
 		},
 		historyApiFallback: true
