@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import PageSpeedInfo from '../PageSpeedInfo';
 import HostingInfo from '../HostingInfo';
+import LaptopImage from '../LaptopImage';
 import cx from 'classnames';
 import './AnalyzeDomainResults.css';
 
@@ -25,8 +26,14 @@ class AnalyzeDomainResults extends React.Component {
 		return (
 			<div>
 				<div className="row">
-					<div className="Tile medium-4 columns">
-						<div className="thumb">
+					<div className="Tile medium-5 columns">
+						<LaptopImage
+							alignOuterEdges
+							size={{
+								width: scrn.width > 180 ? 180 : scrn.width,
+								height: scrn.width > 180 ? (scrn.height * 180 / scrn.width) : scrn.height
+							}}
+						>
 							<a href={`data:${scrn.mime_type};base64,${scrn.data}`}
 								target="_blank"
 							>
@@ -34,10 +41,10 @@ class AnalyzeDomainResults extends React.Component {
 									alt="site preview"
 								/>
 							</a>
-						</div>
+						</LaptopImage>
 					</div>
 
-					<div className="Tile medium-8 columns">
+					<div className="Tile medium-7 columns">
 						<div className="panel InfoCard InfoCard--no-overflow">
 							<div className="panel__body">
 								<div className="InfoCard__heading">

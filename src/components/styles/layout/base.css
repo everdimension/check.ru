@@ -7,7 +7,7 @@ html {
 }
 body {
 	background-color: #647E88;
-	background-image: linear-gradient(to right bottom, #647E88, #3C5263);
+	background-image: linear-gradient(to right bottom, #7c9cab, #476e7d); /* #647E88, #3C5263); */
 	background-repeat: no-repeat;
 }
 

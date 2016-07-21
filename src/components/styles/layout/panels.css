@@ -1,12 +1,17 @@
 .panel {
 	background-color: #fff;
-	border: $app-border-clr-light;
+	border: 1px solid $panel-border-color;
+	&--secondary {
+		background-color: #f4f4f4;
+		border: none;
+	}
 	&__body {
 		padding: 20px;
 	}
 
 	&--transparent {
 		background-color: transparent;
+		border: none;
 		.panel__body {
 			padding-left: 0;
 			padding-right: 0;

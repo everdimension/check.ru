@@ -1,14 +1,14 @@
-var webpack                = require('webpack');
-var SvgStore               = require('webpack-svgstore-plugin');
-var HtmlWebpackPlugin      = require('html-webpack-plugin');
-var path                   = require('path');
-var postcssImport          = require('postcss-import');
-var postcssLoaders         = require('./tools/postcssLoaders');
-var fileExists             = require('./tools/fileExists');
-const nodeEnv              = process.env.NODE_ENV || 'development';
-var isProduction           = nodeEnv === 'production';
-var isDevelopment          = !isProduction;
-var PORT                   = 8070;
+var webpack								= require('webpack');
+var SvgStore							 = require('webpack-svgstore-plugin');
+var HtmlWebpackPlugin			= require('html-webpack-plugin');
+var path									 = require('path');
+var postcssImport					= require('postcss-import');
+var postcssLoaders				 = require('./tools/postcssLoaders');
+var fileExists						 = require('./tools/fileExists');
+const nodeEnv							= process.env.NODE_ENV || 'development';
+var isProduction					 = nodeEnv === 'production';
+var isDevelopment					= !isProduction;
+var PORT									 = 8070;
 
 var envExists = fileExists('./.env');
 if (!envExists) { console.warn('.env file not found'); }
@@ -110,6 +110,20 @@ if (isDevelopment) {
 	);
 }
 
+if (isProduction) {
+	plugins.push(
+		new webpack.optimize.OccurenceOrderPlugin(),
+		new webpack.optimize.DedupePlugin(),
+		new webpack.optimize.UglifyJsPlugin({
+			compressor: {
+				unsafe: true,
+				warnings: false,
+				screw_ie8: true,
+			},
+		})
+	)
+}
+
 
 // ***************
 
@@ -127,6 +141,8 @@ module.exports = {
 	},
 
 	plugins: plugins,
+
+	devtool: 'source-map',
 
 	devServer: {
 		hostname: '0.0.0.0',

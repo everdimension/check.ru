@@ -1,7 +1,8 @@
-$main-bg: #f5f5f5;
+$main-bg: #fdfdfd;
 
 $app-border-clr-light: #ddd;
 $app-clr-error: #FA374D;
+$panel-border-color: #f0f0f0;
 
 $text-default: black;
 $text-muted: #666;

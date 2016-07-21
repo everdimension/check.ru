@@ -57,7 +57,7 @@ class HomePage extends React.Component {
 							{this.props.children}
 
 							<StickyFooter wrapperId="copyrightFooterWrapper" contentId="copyrightFooterContent">
-								<div className="panel">
+								<div className="panel panel--secondary">
 									<div className="panel__body">
 										Enter LTD &mdash; старейший регистратор доменных имён в
 										Lorem ipsum dolor sit amet, consectetur adipisicing elit.

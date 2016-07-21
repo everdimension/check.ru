@@ -23,7 +23,7 @@
 			text-decoration: none;
 			transition: border-color 0.25s ease-in-out;
 
-			&:hover, &.active {
+			&:hover {
 				color: $link-clr;
 			}
 
@@ -34,7 +34,7 @@
 			&.active {
 				position: relative;
 				font-size: 1.2em;
-				color: $link-clr;
+				/*color: $link-clr;*/
 				&:after {
 					content: ' ';
 					display: block;
