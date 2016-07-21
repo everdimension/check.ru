@@ -21,7 +21,15 @@ class Footer extends React.Component {
 					<p className="text-light Copyright__line">
 						&copy; {`1996–${new Date().getFullYear()}`} Check.ru
 					</p>
-					<p className="Copyright__line"><a href="http://www.gemagency.ru/" target="_blank">Проект GEM</a></p>
+					<p className="Copyright__line">
+						<img
+							className="Copyright__logo-img"
+							src={require('../../img/gem.png')}
+							alt="gem logo"
+						/>
+						{' '}
+						<a href="http://www.gemagency.ru/" target="_blank">Проект GEM</a>
+					</p>
 				</div>
 
 				<div className="Footer__item Footer__tracker">
@@ -46,6 +54,12 @@ class Footer extends React.Component {
 						</a>
 					</p>
 					<p>
+						<img
+							className="Footer__mail-icon"
+							src={require('../../img/envelope.png')}
+							alt=""
+						/>
+						{' '}
 						<a href="mailto:hello@check.ru">hello@check.ru</a>
 					</p>
 				</div>

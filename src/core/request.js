@@ -4,9 +4,9 @@ import jsonResponseHandler from './jsonResponseHandler';
 
 superagentPromisePlugin.Promise = Promise;
 
-function request(path) {
+export function request(resourceUrl) {
 	const requestObject = superagent
-		.get(path)
+		.get(resourceUrl)
 		.use(superagentPromisePlugin);
 
 	const promise = requestObject
@@ -15,4 +15,15 @@ function request(path) {
 	return promise;
 }
 
-export default request;
+export function post(resourceUrl, data) {
+	const requestObject = superagent
+		.post(resourceUrl)
+		.send(data)
+		.use(superagentPromisePlugin);
+
+	const promise = requestObject
+		.then(jsonResponseHandler);
+
+	promise.abort = requestObject.abort.bind(requestObject);
+	return promise;
+}

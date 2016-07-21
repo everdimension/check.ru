@@ -46,10 +46,20 @@
 			margin: 0;
 		}
 	}
+
+	&__mail-icon {
+		position: relative;
+		bottom: 1px;
+		vertical-align: middle;
+	}
 }
 
 .Copyright {
 	&__line {
 		margin: 0;
+	}
+
+	&__logo-img {
+		vertical-align: middle;
 	}
 }
