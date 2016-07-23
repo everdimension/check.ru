@@ -7,7 +7,7 @@ import {
 	setTldsToShow
 } from '../redux/modules/domains';
 import DomainSearch from '../components/DomainSearch';
-import tlds from '../tlds';
+import tlds from '../config';
 
 class DomainsContainer extends React.Component {
 	static get contextTypes() {

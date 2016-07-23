@@ -1,5 +1,5 @@
 import { Domains } from '../../api/Domains';
-import tlds from '../../tlds';
+import tlds from '../../config';
 
 export const ADD_DOMAIN     = 'ADD_DOMAIN';
 export const REQUEST_DOMAIN = 'REQUEST_DOMAIN';
@@ -54,6 +54,7 @@ function domainReducer(state = initialDomainState, action) {
 			return Object.assign({}, state, {
 				tld: action.domain.tld,
 				price: action.domain.price,
+				registerLink: action.domain.registerLink,
 				isFetching: action.domain.isFetching || state.isFetching,
 				data: action.domain.data || state.data
 			});

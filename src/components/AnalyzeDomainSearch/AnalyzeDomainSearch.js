@@ -33,7 +33,7 @@ class AnalyzeDomainSearch extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className="DomainSearch__search">
 				<form onSubmit={this.handleSubmit} noValidate>
 					<div className="InputGroup">
 						<div className="InputWrapper">

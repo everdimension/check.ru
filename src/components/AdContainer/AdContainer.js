@@ -1,4 +1,5 @@
 import React, { PropTypes as t } from 'react';
+import './AdContainer.css';
 
 class AdContainer extends React.Component {
 	static get propTypes() {
@@ -9,7 +10,7 @@ class AdContainer extends React.Component {
 
 	render() {
 		return (
-			<div className="text-center">
+			<div className="AdContainer text-center">
 				{this.props.children}
 			</div>
 		);

@@ -10,6 +10,7 @@ class HostingInfo extends React.Component {
 
 	render() {
 		const { whois } = this.props;
+		const { domain } = whois.regrinfo;
 
 		return (
 			<div>
@@ -19,7 +20,7 @@ class HostingInfo extends React.Component {
 							Регистратор
 						</div>
 						<div className="small-8 columns">
-							{whois.regrinfo.domain.sponsor || ''}
+							{domain.sponsor || ''}
 						</div>
 					</div>
 					<div className="row SummaryTable__row">
@@ -27,15 +28,26 @@ class HostingInfo extends React.Component {
 							Дата регистрации
 						</div>
 						<div className="small-8 columns">
-							{whois.regrinfo.domain.created}
+							{domain.created}
 						</div>
 					</div>
+					{domain.expires ?
+						<div className="row SummaryTable__row">
+							<div className="small-4 columns text-light text-thin SummaryTable__label">
+								Зарегистрирован до
+							</div>
+							<div className="small-8 columns">
+								{domain.expires}
+							</div>
+						</div> :
+						null
+					}
 					<div className="row SummaryTable__row">
 						<div className="small-4 columns text-light text-thin SummaryTable__label">
 							Статус
 						</div>
 						<div className="small-8 columns">
-							{whois.regrinfo.domain.status.join(', ')}
+							{domain.status.join(', ')}
 						</div>
 					</div>
 					<div className="row SummaryTable__row">
@@ -43,7 +55,7 @@ class HostingInfo extends React.Component {
 							DNS-серверы
 						</div>
 						<div className="small-8 columns">
-							{Object.keys(whois.regrinfo.domain.nserver).join(', ')}
+							{Object.keys(domain.nserver).join(', ')}
 						</div>
 					</div>
 				</div>

@@ -66,9 +66,16 @@ class DomainItem extends React.Component {
 
 					{domain.data.available &&
 						<div className="DomainItem__right text-right">
-							<span>{domain.price}{'\u20BD'}</span>
-							<br />
-							<a href="http://dnar.ru" target="_blank">Зарегистрировать</a>
+							{domain.price ?
+								[
+									<span>{domain.price}{'\u20BD'}</span>,
+									<br />
+								] : null
+							}
+							{domain.registerLink ?
+								<a href={domain.registerLink} target="_blank">Зарегистрировать</a> :
+								null
+							}
 						</div>
 					}
 

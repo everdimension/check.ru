@@ -50,6 +50,7 @@ class DomainSearch extends React.Component {
 		const domainsToShow = domains.tldsToShow.map(
 			t => domains.data.find(domain => domain.tld === t)
 		);
+		const isUnknownTld = domainsToShow.length === 1 && !domainsToShow[0].registerLink;
 		return (
 			<div>
 				<div className="DomainSearch__search">
@@ -84,6 +85,24 @@ class DomainSearch extends React.Component {
 						<Alert>
 							<p>Some error</p>
 						</Alert>
+					}
+					{isUnknownTld ?
+						<div
+							style={{
+								textAlign: 'center',
+								maxWidth: 350,
+								margin: 'auto'
+							}}
+						>
+							<p>
+								О такой доменной зоне мы
+								пока не знаем.
+								Если вы уверены, что она существует,
+								{' '}
+								<a href="mailto:hello@check.ru">напишите нам</a>!
+							</p>
+						</div> :
+						null
 					}
 					{ !!domains.data.length &&
 						<DomainsList domains={domainsToShow} fetchDomain={this.props.onSearch} />

@@ -26,7 +26,7 @@ class AnalyzeDomainResults extends React.Component {
 		return (
 			<div>
 				<div className="row">
-					<div className="Tile medium-5 columns">
+					<div className="Tile large-5 columns">
 						<LaptopImage
 							alignOuterEdges
 							size={{
@@ -44,7 +44,7 @@ class AnalyzeDomainResults extends React.Component {
 						</LaptopImage>
 					</div>
 
-					<div className="Tile medium-7 columns">
+					<div className="Tile large-7 columns">
 						<div className="panel InfoCard InfoCard--no-overflow">
 							<div className="panel__body">
 								<div className="InfoCard__heading">
@@ -117,10 +117,10 @@ class AnalyzeDomainResults extends React.Component {
 
 								<div className="SummaryTable">
 									<div className="row SummaryTable__row">
-										<div className="small-5 columns text-muted text-thin SummaryTable__label">
+										<div className="small-7 columns text-muted text-thin SummaryTable__label">
 											Код ответа:
 										</div>
-										<div className="small-7 columns">
+										<div className="small-5 columns">
 											{http.status}
 											{' '}
 											<span
@@ -132,21 +132,32 @@ class AnalyzeDomainResults extends React.Component {
 										</div>
 									</div>
 									<div className="row SummaryTable__row">
-										<div className="small-5 columns text-muted text-thin SummaryTable__label">
+										<div className="small-7 columns text-muted text-thin SummaryTable__label">
 											Веб-сервер:
 										</div>
-										<div className="small-7 columns">
+										<div className="small-5 columns">
 											{http.headers.Server}
 										</div>
 									</div>
 									<div className="row SummaryTable__row">
-										<div className="small-5 columns text-muted text-thin SummaryTable__label">
+										<div className="small-7 columns text-muted text-thin SummaryTable__label">
 											Кодировка сайта:
 										</div>
-										<div className="small-7 columns">
+										<div className="small-5 columns">
 											{http.charset}
 										</div>
 									</div>
+									{http.headers['X-Powered-By'] ?
+										<div className="row SummaryTable__row">
+											<div className="small-7 columns text-muted text-thin SummaryTable__label">
+												Язык программирования:
+											</div>
+											<div className="small-5 columns">
+												{http.headers['X-Powered-By']}
+											</div>
+										</div> :
+										null
+									}
 								</div>
 							</div>
 						</div>
