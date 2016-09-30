@@ -174,8 +174,12 @@ class Tooltip extends React.Component {
 		return React.cloneElement(
 			this.props.children,
 			{
+				'aria-haspopup': 'true',
+				tabIndex: '0',
 				onMouseOver: this.handleMouseOver,
+				onFocus: this.handleMouseOver,
 				onMouseOut: this.handleMouseOut,
+				onBlur: this.handleMouseOut,
 				ref: this.mount
 			}
 		);

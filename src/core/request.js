@@ -1,6 +1,6 @@
 import superagent from 'superagent';
 import superagentPromisePlugin from 'superagent-promise-plugin';
-import jsonResponseHandler from './jsonResponseHandler';
+import { responseHandler, errorHandler } from './jsonResponseHandler';
 
 superagentPromisePlugin.Promise = Promise;
 
@@ -10,7 +10,8 @@ export function request(resourceUrl) {
 		.use(superagentPromisePlugin);
 
 	const promise = requestObject
-		.then(jsonResponseHandler);
+		.then(responseHandler)
+		.catch(errorHandler);
 	promise.abort = requestObject.abort.bind(requestObject);
 	return promise;
 }
@@ -22,7 +23,8 @@ export function post(resourceUrl, data) {
 		.use(superagentPromisePlugin);
 
 	const promise = requestObject
-		.then(jsonResponseHandler);
+		.then(responseHandler)
+		.catch(errorHandler);
 
 	promise.abort = requestObject.abort.bind(requestObject);
 	return promise;

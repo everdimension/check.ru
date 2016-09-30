@@ -1,16 +1,16 @@
-var webpack								= require('webpack');
-var SvgStore							 = require('webpack-svgstore-plugin');
-var HtmlWebpackPlugin			= require('html-webpack-plugin');
-var path									 = require('path');
-var postcssImport					= require('postcss-import');
-var postcssLoaders				 = require('./tools/postcssLoaders');
-var fileExists						 = require('./tools/fileExists');
-const nodeEnv							= process.env.NODE_ENV || 'development';
-var isProduction					 = nodeEnv === 'production';
-var isDevelopment					= !isProduction;
-var PORT									 = 8070;
+const webpack								 = require('webpack');
+const SvgStore							 = require('webpack-svgstore-plugin');
+const HtmlWebpackPlugin			 = require('html-webpack-plugin');
+const path									 = require('path');
+const postcssImport					 = require('postcss-import');
+const postcssLoaders				 = require('./tools/postcssLoaders');
+const fileExists						 = require('./tools/fileExists');
+const nodeEnv							   = process.env.NODE_ENV || 'development';
+const isProduction					 = nodeEnv === 'production';
+const isDevelopment					 = !isProduction;
+const PORT									 = 8070;
 
-var envExists = fileExists('./.env');
+const envExists = fileExists('./.env');
 if (!envExists) { console.warn('.env file not found'); }
 if (isProduction) {
 	if (!envExists) { process.exit(1); }
@@ -20,30 +20,30 @@ if (isProduction) {
 	require('dotenv').config(envExists ? {} : { path: './.env_sample' });
 }
 
-var paths = {
+const paths = {
 	src: path.join(__dirname, '/src'),
 	dist: './dist',
-	distAbsolute: __dirname + '/dist'
+	distAbsolute: `${__dirname}/dist`
 };
 
-var entry = [
-	paths.src + '/index.js'
+const entry = [
+	`${paths.src}/index.js`
 ];
 
 if (isDevelopment) {
 	entry.unshift(
-		'webpack-dev-server/client?http://0.0.0.0:' + PORT,
+		`webpack-dev-server/client?http://0.0.0.0:${PORT}`,
 		'webpack/hot/only-dev-server'
 	);
 }
 
-var output = {
+const output = {
 	path: paths.distAbsolute,
 	publicPath: '/',
 	filename: 'app.bundle.js'
 };
 
-var wpModule = {
+const wpModule = {
 	loaders: [
 		{
 			test: /\.jsx?$/,
@@ -57,7 +57,7 @@ var wpModule = {
 			loader: 'style!css!sass'
 		}, {
 			test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
-			loader: 'url-loader?limit=10000',
+			loader: 'url-loader?limit=10000'
 		}
 	]
 };
@@ -72,7 +72,7 @@ if (isDevelopment) {
 	];
 }
 
-var htmlWebpackPluginConfig = {
+const htmlWebpackPluginConfig = {
 	inject: true,
 	template: path.join(paths.src, 'index.html')
 };
@@ -87,12 +87,12 @@ if (isProduction) {
 	htmlWebpackPluginConfig.development = true;
 }
 
-var plugins = [
+const plugins = [
 	new webpack.DefinePlugin({
 		'process.env.NODE_ENV': JSON.stringify(nodeEnv),
 		__AD_CLIENT_KEY__: JSON.stringify(process.env.AD_CLIENT_KEY),
 		__AD_SLOT_NUMBER__: JSON.stringify(process.env.AD_SLOT_NUMBER),
-		__DEV__: isDevelopment,
+		__DEV__: isDevelopment
 	}),
 	new HtmlWebpackPlugin(htmlWebpackPluginConfig),
 	// new webpack.ProvidePlugin({
@@ -118,29 +118,29 @@ if (isProduction) {
 			compressor: {
 				unsafe: true,
 				warnings: false,
-				screw_ie8: true,
-			},
+				screw_ie8: true
+			}
 		})
-	)
+	);
 }
 
 
 // ***************
 
 module.exports = {
-	entry: entry,
-	output: output,
+	entry,
+	output,
 	module: wpModule,
 
-	postcss: function (webpack) {
+	postcss(wp) {
 		return [
 			postcssImport({
-				addDependencyTo: webpack
+				addDependencyTo: wp
 			})
 		].concat(postcssLoaders);
 	},
 
-	plugins: plugins,
+	plugins,
 
 	devtool: 'source-map',
 
@@ -154,7 +154,7 @@ module.exports = {
 		proxy: {
 			'/api/*': {
 				// target: 'http://127.0.0.1:4300',
-				target: 'http://127.0.0.1:8888/checkru_server/public',
+				target: 'http://127.0.0.1:8888/checkru_server/public'
 				// target: 'http://new.check.ru/api',
 				// secure: false,
 				// changeOrigin: true,

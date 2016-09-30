@@ -32,7 +32,6 @@ class AnalyzeContainer extends React.Component {
 	}
 
 	analyze(q) {
-		console.log('should send to api', q);
 		this.store.dispatch(
 			fetchDomainCheck(q)
 		);

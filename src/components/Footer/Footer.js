@@ -42,16 +42,13 @@ class Footer extends React.Component {
 
 				<div className="Footer__item Footer__contacts">
 					<p>
-						<a href="#">
-							<Tooltip
-								title={tooltipContent}
-								position="top"
-								waitBeforeClose
-							>
-								<span>Ваш домен ранее обслуживался на check.ru?</span>
-							</Tooltip>
-
-						</a>
+						<Tooltip
+							title={tooltipContent}
+							position="top"
+							waitBeforeClose
+						>
+							<span>Ваш домен ранее обслуживался на check.ru?</span>
+						</Tooltip>
 					</p>
 					<p>
 						<img
