@@ -48,7 +48,7 @@ const wpModule = {
 		{
 			test: /\.jsx?$/,
 			exclude: /node_modules/,
-			loader: 'react-hot!babel'
+			loader: 'babel'
 		}, {
 			test: /\.css$/,
 			loader: 'style!css!postcss'
