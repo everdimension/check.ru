@@ -3,15 +3,27 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="x-ua-compatible" content="ie=edge">
-		<title>domain search</title>
-		<meta name="description" content="">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>
+			<% if (htmlWebpackPlugin.options.production) { %>
+				@if ($page == 'whois')
+					Проверка доменов | Whois | check.ru
+				@elseif ($page == 'analytics')
+					Анализ доменов | check.ru
+				@endif
+			<% } %>
+		</title>
 
 		<% if (htmlWebpackPlugin.options.production) { %>
-			@if (2 + 3 == 5)
-				<meta name="keywords" content="testing check">
+			@if ($page == 'whois')
+				<meta name="keywords" content="whois testing check">
+				<meta name="description" content="Проверка доменных имён">
+			@elseif ($page == 'analytics')
+				<meta name="keywords" content="analytics testing check">
+				<meta name="description" content="Анализ доменов">
+			@endif
 		<% } %>
 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="apple-touch-icon" href="apple-touch-icon.png">
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
 		<!-- Place favicon.ico in the root directory -->
