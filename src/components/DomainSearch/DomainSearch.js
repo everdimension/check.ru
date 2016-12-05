@@ -3,6 +3,7 @@ import Alert from '../Alert';
 import DomainsList from '../DomainsList';
 import ProgressLine from '../ProgressLine';
 import extractDomain from '../../utils/extractDomain';
+import StickyFooter from '../StickyFooter';
 import './DomainSearch.css';
 
 class DomainSearch extends React.Component {
@@ -109,6 +110,17 @@ class DomainSearch extends React.Component {
 					}
 				</div>
 
+
+				<StickyFooter wrapperId="copyrightFooterWrapper" contentId="copyrightFooterContent">
+					<div className="panel panel--secondary">
+						<div className="panel__body">
+							Enter LTD &mdash; старейший регистратор доменных имён в
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+							Nostrum sed, recusandae veritatis mollitia eos
+							exercitationem corrupti doloremque qui unde alias?
+						</div>
+					</div>
+				</StickyFooter>
 			</div>
 		);
 	}

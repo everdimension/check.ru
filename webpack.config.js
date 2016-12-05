@@ -82,6 +82,7 @@ if (isProduction) {
 		trackingId: 'UA-XXXXXXPP-X',
 		pageViewOnLoad: true
 	};
+	htmlWebpackPluginConfig.production = true;
 } else {
 	// DEVELOPMENT
 	htmlWebpackPluginConfig.development = true;
